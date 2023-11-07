@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeHunter - Your One-Stop-Shop Home Discovery Site</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../dist/output.css">
+</head>
+
+<body class="h-screen bg-white tracking-tight relative font-sans dark:bg-gray-900">
+
+    <!-- Navigation -->
+    <div class="container mx-auto">
+        <header class="flex justify-between items-center py-4 relative z-10">
+            <span class="self-end">
+                <a href="/" class="font-extrabold text-2xl">
+                    <span class="text-[#04EDAE]">Home</span>
+                    <span class="text-[193E5B]">Hunter</span>
+                </a>
+            </span>
+            <div class="flex flex-col gap-y-4">
+                <ul class="flex gap-x-4 justify-end text-gray-400">
+                    <li class="flex">123 Coconut St. Manila, PH</li>
+                    <li class="flex">+63 0909 123 4567</li>
+                </ul>
+                <nav class="flex justify-end gap-x-6 text-xl font-medium text-white">
+                    <a href="" class="current-page">Home</a>
+                    <a href="" class="">Properties</a>
+                    <a href="" class="">Services</a>
+                    <a href="" class="">About</a>
+                    <a href="" class="">Sign In</a>
+                </nav>
+            </div>
+        </header>
+    </div>
+    <!-- End: Navigation -->
+
+    <!-- Hero Section -->
+    <div class="container mx-auto flex items-center h-[60%]">
+        <section>
+            <div class="flex flex-col gap-y-4">
+                <h1>
+                    <span class="text-main-color text-6xl font-black">Your Dream Home. </span><br />
+                    <span class="text-secondary-color text-6xl font-black">One Step Closer.</span>
+                </h1>
+                <p class="text-lg">Your dream home awaits - let's unlock <br />the door to your future together!</p>
+                <div class="flex gap-x-4">
+                    <a href=""
+                        class="flex-1 text-center rounded-full py-4 border border-main-color text-main-color hover:bg-main-color hover:text-white">About
+                        Us</a>
+                    <a href="" class="flex-1 button">Search
+                        Properties</a>
+                </div>
+            </div>
+            <div
+                class="bg-gray-800 w-2/5 h-[auto] absolute right-0 top-0 z-0 after:contents-[''] after:absolute after:top-0 after:left-0 after:block after:w-full after:h-full after:bg-gradient-to-br after:from-gray-800 after:via-gray-800/[80%]">
+                <img src="/src/images/home1.jpg" alt="Home Image" class="opacity-25">
+                <div
+                    class="w-96 h-96 bg-orange-300 absolute -bottom-32 -left-32 z-20 rounded-[75px] overflow-hidden card">
+                    <img src="/src/images/home2.jpg" alt="Home Image" class="">
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- End: Hero Section -->
+
+    <!-- New Home Entries -->
+    <div class="wrapper py-20">
+        <section class="container mx-auto flex relative">
+            <header class="mt-12 -mr-32 relative z-10">
+                <h2 class="flex flex-col mb-8 w-96">
+                    <span class="text-secondary-color uppercase text-sm font-black">Properties</span>
+                    <span class="text-main-color font-black text-5xl">Our New <span
+                            class="text-secondary-color">Home</span>
+                        <br />Entries</span>
+                </h2>
+                <a href="" class="button">Browse Properties</a>
+            </header>
+
+            <div
+                class="carousel flex flex-col w-4/5 min-h-[400px] p-8 pt-0 bg-accent-color rounded-[75px] relative z-0">
+                <p class="text-main-color p-28 pt-20 w-3/4 mx-auto text-center">
+                    Autem ratione voluptates rem voluptatem cumque nemo animi consequatur nihil. Magni autem et non.
+                    Neque ut in repellendus voluptatem.</p>
+
+                <div class="w-full grid grid-cols-3 gap-x-8">
+                    <div class="h-[440px] bg-red-200 rounded-[75px] shadow-xl"></div>
+                    <div class="h-[440px] bg-red-200 rounded-[75px] shadow-xl"></div>
+                    <div class="h-[440px] bg-red-200 rounded-[75px] shadow-xl"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- End: New Home Entries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="/src/scripts/card.js"></script>
+
+</body>
+
+</html>

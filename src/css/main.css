@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scrollbar-gutter: stable;
+}
+
+.current-page {
+    @apply text-secondary-color;
+}
+
+::-webkit-scrollbar {
+    width: 12px !important;
+    height: 12px !important;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 10px !important;
+    height: 10px !important;
+    background: content-box linear-gradient(to bottom, #193e5b, #04edae);
+    border-radius: 17px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent;
+    border-image: initial;
+}
+
+.button {
+    @apply bg-button-normal-color hover:bg-button-hover-color rounded-full border border-transparent px-6 py-4 text-center text-white;
+}
