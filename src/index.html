@@ -12,18 +12,19 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,800&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="/src/css/splide-core.min.css">
     <link rel="stylesheet" href="../dist/output.css">
 </head>
 
-<body class="h-screen bg-white tracking-tight relative font-sans dark:bg-gray-900">
+<body class="h-screen bg-white relative font-sans dark:bg-gray-900">
 
     <!-- Navigation -->
     <div class="container mx-auto">
         <header class="flex justify-between items-center py-4 relative z-10">
             <span class="self-end">
-                <a href="/" class="font-extrabold text-2xl">
-                    <span class="text-[#04EDAE]">Home</span>
-                    <span class="text-[193E5B]">Hunter</span>
+                <a href="/" class="font-extrabold text-2xl tracking-tighter">
+                    <span class="text-secondary-color">Home</span>
+                    <span class="text-main-color">Hunter</span>
                 </a>
             </span>
             <div class="flex flex-col gap-y-4">
@@ -64,7 +65,7 @@
                 class="bg-gray-800 w-2/5 h-[auto] absolute right-0 top-0 z-0 after:contents-[''] after:absolute after:top-0 after:left-0 after:block after:w-full after:h-full after:bg-gradient-to-br after:from-gray-800 after:via-gray-800/[80%]">
                 <img src="/src/images/home1.jpg" alt="Home Image" class="opacity-25">
                 <div
-                    class="w-96 h-96 bg-orange-300 absolute -bottom-32 -left-32 z-20 rounded-[75px] overflow-hidden card">
+                    class="w-96 h-96 bg-orange-300 absolute -bottom-32 -left-32 z-20 rounded-[75px] shadow-xl overflow-hidden card">
                     <img src="/src/images/home2.jpg" alt="Home Image" class="">
                 </div>
             </div>
@@ -75,8 +76,8 @@
     <!-- New Home Entries -->
     <div class="wrapper py-20">
         <section class="container mx-auto flex relative">
-            <header class="mt-12 -mr-32 relative z-10">
-                <h2 class="flex flex-col mb-8 w-96">
+            <header class="mt-12 -mr-32">
+                <h2 class="flex flex-col mb-8 w-96 relative z-20">
                     <span class="text-secondary-color uppercase text-sm font-black">Properties</span>
                     <span class="text-main-color font-black text-5xl">Our New <span
                             class="text-secondary-color">Home</span>
@@ -85,24 +86,171 @@
                 <a href="" class="button">Browse Properties</a>
             </header>
 
-            <div
-                class="carousel flex flex-col w-4/5 min-h-[400px] p-8 pt-0 bg-accent-color rounded-[75px] relative z-0">
+            <div class="carousel flex flex-col w-4/5 px-8 py-0 bg-accent-color rounded-[75px] relative z-10">
                 <p class="text-main-color p-28 pt-20 w-3/4 mx-auto text-center">
                     Autem ratione voluptates rem voluptatem cumque nemo animi consequatur nihil. Magni autem et non.
                     Neque ut in repellendus voluptatem.</p>
 
-                <div class="w-full grid grid-cols-3 gap-x-8">
-                    <div class="h-[440px] bg-red-200 rounded-[75px] shadow-xl"></div>
-                    <div class="h-[440px] bg-red-200 rounded-[75px] shadow-xl"></div>
-                    <div class="h-[440px] bg-red-200 rounded-[75px] shadow-xl"></div>
-                </div>
+                <!-- Carousel -->
+                <section class="splide" aria-labelledby="carousel-heading" role="carousel">
+                    <div class="splide__track pb-4 px-20">
+                        <div class="splide__list">
+                            <div
+                                class="splide__slide h-[440px] overflow-hidden rounded-[75px] shadow-md flex justify-center items-center relative group card">
+                                <div
+                                    class="flex-col w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black hidden justify-center items-center p-8 group-hover:flex">
+                                    <p class="text-white text-lg self-center mt-auto mb-16">
+                                        This is the content of the hovered house thumbnail.
+                                    </p>
+                                    <a href=""
+                                        class="rounded-full p-4 flex justify-center items-center bg-white self-end transition duration-300 ease-in-out hover:scale-110"
+                                        title="Go to property">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-black">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                        </svg>
+                                        <span class="sr-only">Go to property</span>
+                                    </a>
+                                </div>
+                                <img src="/src/images/house.jpg" alt="House image" class="object-cover w-full h-full">
+                            </div>
+
+                            <div
+                                class="splide__slide h-[440px] overflow-hidden rounded-[75px] shadow-md flex justify-center items-center relative group">
+                                <div
+                                    class="flex-col w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black hidden justify-center items-center p-8 group-hover:flex">
+                                    <p class="text-white text-lg self-center mt-auto mb-16">
+                                        This is the content of the hovered house thumbnail.
+                                    </p>
+                                    <a href=""
+                                        class="rounded-full p-4 flex justify-center items-center bg-white self-end transition duration-300 ease-in-out hover:scale-110"
+                                        title="Go to property">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-black">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                        </svg>
+                                        <span class="sr-only">Go to property</span>
+                                    </a>
+                                </div>
+                                <img src="/src/images/house2.jpg" alt="House image" class="object-cover w-full h-full">
+                            </div>
+
+                            <div
+                                class="splide__slide h-[440px] overflow-hidden rounded-[75px] shadow-md flex justify-center items-center relative group">
+                                <div
+                                    class="flex-col w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black hidden justify-center items-center p-8 group-hover:flex">
+                                    <p class="text-white text-lg self-center mt-auto mb-16">
+                                        This is the content of the hovered house thumbnail.
+                                    </p>
+                                    <a href=""
+                                        class="rounded-full p-4 flex justify-center items-center bg-white self-end transition duration-300 ease-in-out hover:scale-110"
+                                        title="Go to property">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-black">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                        </svg>
+                                        <span class="sr-only">Go to property</span>
+                                    </a>
+                                </div>
+                                <img src="/src/images/house3.jpg" alt="House image" class="object-cover w-full h-full">
+                            </div>
+
+                            <div
+                                class="splide__slide h-[440px] overflow-hidden rounded-[75px] shadow-md flex justify-center items-center relative group">
+                                <div
+                                    class="flex-col w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black hidden justify-center items-center p-8 group-hover:flex">
+                                    <p class="text-white text-lg self-center mt-auto mb-16">
+                                        This is the content of the hovered house thumbnail.
+                                    </p>
+                                    <a href=""
+                                        class="rounded-full p-4 flex justify-center items-center bg-white self-end transition duration-300 ease-in-out hover:scale-110"
+                                        title="Go to property">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-black">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                        </svg>
+                                        <span class="sr-only">Go to property</span>
+                                    </a>
+                                </div>
+                                <img src="/src/images/house4.jpg" alt="House image" class="object-cover w-full h-full">
+                            </div>
+
+                            <div
+                                class="splide__slide h-[440px] overflow-hidden rounded-[75px] shadow-md flex justify-center items-center relative group">
+                                <div
+                                    class="flex-col w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black hidden justify-center items-center p-8 group-hover:flex">
+                                    <p class="text-white text-lg self-center mt-auto mb-16">
+                                        This is the content of the hovered house thumbnail.
+                                    </p>
+                                    <a href=""
+                                        class="rounded-full p-4 flex justify-center items-center bg-white self-end transition duration-300 ease-in-out hover:scale-110"
+                                        title="Go to property">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-black">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                        </svg>
+                                        <span class="sr-only">Go to property</span>
+                                    </a>
+                                </div>
+                                <img src="/src/images/house5.jpg" alt="House image" class="object-cover w-full h-full">
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                        Carousel Navigation Buttons
+                        NOTE: If you want to show the carousel arrows, change the 'arrows' option in the settings below to 'true'
+                    -->
+                    <div class="splide__arrows flex justify-center gap-x-4 py-4">
+                        <button class="splide__arrow splide__arrow--prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                            </svg>
+
+                        </button>
+                        <button class="splide__arrow splide__arrow--next">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+
+                        </button>
+                    </div>
+                </section>
+                <!-- End: Carousel -->
             </div>
         </section>
     </div>
     <!-- End: New Home Entries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+
+    <script src="/src/scripts/splide.min.js"></script>
+
+    <!-- Card Tilting Animation (Requires GSAP) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
     <script src="/src/scripts/card.js"></script>
 
+    <!-- Carousel Configurations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var splide = new Splide('.splide', {
+                type: 'loop',
+                autoplay: true,
+                perPage: 3,
+                rewind: true,
+                arrows: false, // turn to true, if you want to show the carousel page arrows.
+                gap: 32,
+            });
+            splide.mount();
+        });
+    </script>
+    <!-- End: Carouse Configurations -->
 </body>
 
 </html>
