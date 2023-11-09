@@ -1,23 +1,23 @@
-// All element with a class of 'card' will be skewed animated upon hover.
-const cards = document.querySelectorAll('[data-tilter]')
+// All element with an data-tilter html attribute will be skewed animated upon hover.
+const elements = document.querySelectorAll('[data-tilter]')
 
-cards.forEach(card => {
-    gsap.set(card, { transformPerspective: 1000 })
+elements.forEach(element => {
+    gsap.set(element, { transformPerspective: 1000 })
 
-    card.addEventListener('mouseenter', () => {
-        gsap.to(card, {
+    element.addEventListener('mouseenter', () => {
+        gsap.to(element, {
             duration: 0.2,
             scale: 1.05,
             ease: 'power2.out'
         })
     })
 
-    card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect()
-        const x = ((e.clientX - rect.left) / card.clientWidth - 0.5) * 2
-        const y = ((e.clientY - rect.top) / card.clientHeight - 0.5) * 2
+    element.addEventListener('mousemove', e => {
+        const rect = element.getBoundingClientRect()
+        const x = ((e.clientX - rect.left) / element.clientWidth - 0.5) * 2
+        const y = ((e.clientY - rect.top) / element.clientHeight - 0.5) * 2
 
-        gsap.to(card, {
+        gsap.to(element, {
             duration: 0.5,
             rotationY: x * 15,
             rotationX: y * -15,
@@ -25,8 +25,8 @@ cards.forEach(card => {
         })
     })
 
-    card.addEventListener('mouseleave', () => {
-        gsap.to(card, {
+    element.addEventListener('mouseleave', () => {
+        gsap.to(element, {
             duration: 0.5,
             rotationY: 0,
             rotationX: 0,

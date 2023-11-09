@@ -23,7 +23,7 @@
 <body class="h-screen bg-white relative font-sans dark:bg-gray-900">
 
     <!-- Navigation -->
-    <div class="container mx-auto">
+    <div class="container">
         <header class="flex justify-between items-center py-4 relative z-10">
             <span class="self-end">
                 <a href="/" class="font-extrabold text-2xl tracking-tighter">
@@ -49,7 +49,7 @@
     <!-- End: Navigation -->
 
     <!-- Hero Section -->
-    <div class="container mx-auto flex items-center h-[60%]">
+    <div class="container flex items-center h-[60%]">
         <section>
             <div class="flex flex-col gap-y-4">
                 <h1>
@@ -79,8 +79,8 @@
 
     <!-- New Home Entries Section -->
     <div
-        class="wrapper py-20 relative before:contents-[''] before:block before:w-2 before:h-1/2 before:bg-main-color before:absolute before:top-0 before:left-0 after:contents-[''] after:block after:w-2 after:h-1/2 after:bg-secondary-color after:absolute after:bottom-0 after:left-0">
-        <section class="container mx-auto flex relative">
+        class="wrapper py-20 relative before:contents-[''] before:block before:w-4 before:h-1/2 before:bg-main-color before:absolute before:top-0 before:left-0 after:contents-[''] after:block after:w-4 after:h-1/2 after:bg-secondary-color after:absolute after:bottom-0 after:left-0">
+        <section class="container flex relative">
             <header class="mt-12 -mr-32">
                 <h2 class="flex flex-col mb-8 w-96 relative z-20">
                     <span class="text-secondary-color uppercase text-sm font-black">Properties</span>
@@ -234,6 +234,7 @@
 
                         </button>
                     </div>
+                    <!-- End: Carousel Navigation -->
                 </section>
                 <!-- End: Carousel -->
             </div>
@@ -243,17 +244,123 @@
 
     <!-- Booking Section -->
     <div
-        class="wrapper py-20 relative before:contents-[''] before:block before:w-2 before:h-1/2 before:bg-main-color before:absolute before:top-0 before:right-0 after:contents-[''] after:block after:w-2 after:h-1/2 after:bg-secondary-color after:absolute after:bottom-0 after:right-0">
+        class="wrapper py-20 relative before:contents-[''] before:block before:w-4 before:h-1/2 before:bg-main-color before:absolute before:top-0 before:right-0 after:contents-[''] after:block after:w-4 after:h-1/2 after:bg-secondary-color after:absolute after:bottom-0 after:right-0">
 
-        <section class="flex gap-x-8">
-            <div class="flex"></div>
-            <div class="flex">
-                <header></header>
+        <section class="container grid grid-cols-12 gap-x-16">
+            <div class="flex flex-col relative w-full h-[480px] col-span-5" data-tilter>
+                <img src="/src/images/house6.jpg" alt="House 6"
+                    class="rounded-tr-[75px] rounded-bl-[75px] object-cover w-full h-[480px]">
+                <div
+                    class="flex flex-col items-center justify-center w-5/12 h-2/4 bg-main-color absolute right-0 bottom-0 z-10 rounded-tr-[75px] rounded-bl-[75px]">
+                    <div class="flex flex-col">
+                        <span class="text-secondary-color font-bold text-2xl">Booking Starts at</span>
+                        <span class="text-white font-bold text-5xl text-right">$100</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col col-span-7">
+                <header class="mt-12">
+                    <h2 class="flex flex-col mb-8 relative z-20">
+                        <span class="text-secondary-color uppercase text-sm font-black">Booking</span>
+                        <span class="text-main-color font-black text-5xl">
+                            Book Your <span class="text-secondary-color">House Tour</span> <br />Appointment
+                    </h2>
+                </header>
+                <div class="flex flex-col gap-y-4 mb-4 w-9/12">
+                    <p class="text-main-color"> Numquam et tenetur consequuntur dignissimos quia maxime fugit. Tempora
+                        enim recusandae tenetur molestiae consequatur. Est maxime et laboriosam soluta accusantium
+                        consequatur vero sunt. </p>
+                    <p class="text-main-color">
+                        Enim a animi. Voluptate et quibusdam. Quis maxime animi. Hic quia quibusdam nostrum ea
+                        consectetur quo.</p>
+                    <a href="" class="button w-64">Book Now</a>
+                </div>
+
             </div>
         </section>
 
     </div>
     <!-- End: Booking Section -->
+
+    <!-- Real-Estate Agents -->
+    <div class="wrapper my-60 py-20 relative">
+        <div
+            class="before:contents-[''] after:contents-[''] absolute left-0 top-0 z-0 h-full w-full skew-y-[6deg] bg-accent-color before:absolute before:left-0 before:top-0 before:z-10 before:block before:h-1/2 before:w-4 before:bg-main-color after:absolute after:bottom-0 after:left-0 after:z-10 after:block after:h-1/2 after:w-4 after:bg-secondary-color">
+        </div>
+
+        <section class="container grid grid-cols-12 relative z-10">
+            <div class="col-span-6 col-start-2 pb-24">
+                <header class="mt-12">
+                    <h2 class="flex flex-col mb-8 relative z-20">
+                        <span class="text-secondary-color uppercase text-sm font-black">Meet Our Expert Agents</span>
+                        <span class="text-main-color font-black text-5xl">
+                            Our Team of <span class="text-secondary-color">Professional</span> <br />Real Estate Agents
+                        </span>
+                    </h2>
+                </header>
+                <div class="flex flex-col gap-y-4 mb-4 w-9/12">
+                    <p class="text-main-color">Numquam et tenetur consequuntur dignissimos quia maxime fugit. Tempora
+                        enim recusandae tenetur molestiae consequatur. Est maxime et laboriosam soluta accusantium
+                        consequatur vero sunt.</p>
+                    <a href="" class="button w-64">Meet Our Agents</a>
+                </div>
+
+            </div>
+
+            <!-- Thumbnail Grids -->
+            <div class="col-span-3">
+                <!-- Row 1 -->
+                <div class="grid grid-cols-4 gap-4 w-full">
+                    <div class="col-span-2 bg-green-300 h-auto rounded-xl overflow-hidden shadow-gray-400/50 shadow-lg"
+                        data-tilter>
+                        <img src="/src/images/human1.jpg" alt="Avatar">
+                    </div>
+                    <div class="flex flex-col justify-end h-auto">
+                        <div class="bg-white w-full h-1/2 shadow-gray-300/50 shadow-lg rounded-xl" data-tilter></div>
+                    </div>
+                    <div class="flex flex-col justify-end h-auto">
+                        <div class="bg-green-300 w-full h-1/2 shadow-gray-400/50 shadow-lg rounded-xl overflow-hidden"
+                            data-tilter>
+                            <img src="/src/images/human1.jpg" alt="Avatar" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                <!-- End: Row 1 -->
+
+                <!-- Row 2 -->
+                <div class="grid grid-cols-4 gap-4 w-full mt-4">
+                    <div class="flex flex-col gap-4 col-span-1">
+                        <div class="bg-green-300 w-full h-14"></div>
+                        <div class="bg-green-300 w-full h-14"></div>
+                    </div>
+                    <div class="col-span-2 h-auto rounded-xl overflow-hidden shadow-gray-400/50 shadow-lg">
+                        <img src="/src/images/human1.jpg" alt="Avatar">
+                    </div>
+
+                    <div class="flex flex-col gap-4 col-span-1">
+                        <div class="bg-green-300 w-full h-14"></div>
+                        <div class="bg-green-300 w-full h-14"></div>
+                    </div>
+                </div>
+                <!-- End: Row 2 -->
+
+                <!-- Row 3 -->
+                <div class="grid grid-cols-4 gap-4 w-full mt-4">
+                    <div class="flex flex-col col-start-2">
+                        <div class="bg-green-300 w-full h-14"></div>
+                    </div>
+                    <div class="col-span-2 h-auto rounded-xl overflow-hidden shadow-gray-400/50 shadow-lg">
+                        <img src="/src/images/human1.jpg" alt="Avatar">
+                    </div>
+                </div>
+                <!-- End: Row 3 -->
+            </div>
+            <!-- End: Thumbnail Grids -->
+        </section>
+
+    </div>
+    <!-- End: Real-Estate Agents -->
 
     <!-- Card Tilting Animation (Requires GSAP) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
