@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 html {
+    overflow: auto;
     scrollbar-gutter: stable;
 }
 
@@ -10,7 +11,7 @@ html {
     @apply text-secondary-color;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 12px !important;
     height: 12px !important;
     background: transparent;
@@ -25,8 +26,8 @@ html {
     border-style: solid;
     border-color: transparent;
     border-image: initial;
-}
+} */
 
 .button {
-    @apply bg-button-normal-color hover:bg-button-hover-color rounded-full border border-transparent px-6 py-4 text-center text-white;
+    @apply rounded-full border border-transparent bg-button-normal-color px-6 py-4 text-center text-white hover:bg-button-hover-color;
 }
