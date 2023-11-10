@@ -8,9 +8,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-        HomeHunter - Your One-Stop-Shop Home Discovery Site
-    </title>
+    <title>HomeHunter - Your One-Stop-Shop Home Discovery Site</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,25 +25,18 @@
 <body class="relative h-screen bg-white font-sans text-main-color dark:bg-gray-900">
     <!-- Navigation -->
     <div class="container">
-        <header class="relative z-10 flex items-center justify-between py-4">
-            <span class="self-end">
+        <div class="relative z-10 flex items-center justify-between py-4">
+            <header class="self-end">
                 <a href="/" class="text-2xl font-extrabold tracking-tighter">
-                    <span class="text-secondary-color">
-                        Home
-                    </span>
-                    <span class="text-main-color">
-                        Hunter
-                    </span>
+                    <span class="text-secondary-color">Home</span>
+                    <span class="text-main-color">Hunter</span>
                 </a>
-            </span>
-            <div class="flex flex-col gap-y-4">
+            </header>
+            <!-- Desktop Menu -->
+            <div class="hidden flex-col gap-y-4 lg:flex">
                 <ul class="flex justify-end gap-x-4 text-gray-400">
-                    <li class="flex">
-                        123 Coconut St. Manila, PH
-                    </li>
-                    <li class="flex">
-                        +63 0909 123 4567
-                    </li>
+                    <li class="flex">123 Coconut St. Manila, PH</li>
+                    <li class="flex">+63 0909 123 4567</li>
                 </ul>
                 <nav class="flex justify-end gap-x-6 text-xl font-medium text-white">
                     <a href="" class="current-page">Home</a>
@@ -55,40 +46,43 @@
                     <a href="">Sign In</a>
                 </nav>
             </div>
-        </header>
+
+            <!-- Mobile Menu -->
+        </div>
     </div>
     <!-- End: Navigation -->
 
     <!-- Hero Section -->
-    <div class="container flex h-[60%] items-center">
-        <section>
-            <div class="flex flex-col gap-y-4">
-                <h1>
-                    <span class="text-6xl font-black text-main-color">
-                        Your Dream Home.
-                    </span>
+    <div class="container flex items-center lg:h-[60%]">
+        <section class="">
+            <div class="my-24 flex flex-col gap-y-4 text-center lg:my-0 lg:text-left">
+                <h1 class="text-4xl font-black lg:text-6xl">
+                    <span class="text-main-color">Your Dream Home.</span>
                     <br />
-                    <span class="text-6xl font-black text-secondary-color">
+                    <span class="text-secondary-color">
                         One Step Closer.
                     </span>
                 </h1>
                 <p class="text-lg">
-                    Your dream home awaits &mdash; let's unlock <br /> the door to your future together!
+                    Your dream home awaits &mdash; let's unlock
+                    <br />
+                    the door to your future together!
                 </p>
+
                 <div class="flex gap-x-4">
                     <a href=""
                         class="flex-1 rounded-full border border-main-color py-4 text-center text-main-color hover:bg-main-color hover:text-white">
                         About Us
                     </a>
-                    <a href="" class="button flex-1">
-                        Search Properties
-                    </a>
+                    <a href="" class="button flex-1">Search Properties</a>
                 </div>
             </div>
+
             <div
-                class="after:contents-[''] absolute right-0 top-0 z-0 h-[auto] w-2/5 bg-gray-800 after:absolute after:left-0 after:top-0 after:block after:h-full after:w-full after:bg-gradient-to-br after:from-gray-800 after:via-gray-800/[80%]">
-                <img src="/src/images/home1.jpg" alt="Home Image" class="opacity-25" />
-                <div class="absolute -bottom-32 -left-32 z-20 h-96 w-96 overflow-hidden rounded-[75px] shadow-xl"
+                class="after:contents-[''] relative rounded-[75px] bg-gray-800 font-black after:absolute after:left-0 after:top-0 after:hidden after:h-full after:w-full after:bg-gradient-to-br after:from-gray-800 after:via-gray-800/[80%] lg:absolute lg:right-0 lg:top-0 lg:z-0 lg:h-auto lg:w-2/5 lg:rounded-none">
+                <img src="/src/images/home1.jpg" alt="Home Image" class="rounded-[75px] opacity-25 lg:rounded-none" />
+
+                <div class="absolute left-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 transform overflow-hidden rounded-[45px] shadow-xl lg:-bottom-32 lg:-left-32 lg:z-20 lg:h-96 lg:w-96 lg:-translate-x-0 lg:-translate-y-0 lg:transform-none lg:rounded-[75px]"
                     data-tilter>
                     <img src="/src/images/home2.jpg" alt="Home Image" />
                 </div>
@@ -99,36 +93,36 @@
 
     <!-- New Home Entries Section -->
     <div
-        class="wrapper before:contents-[''] after:contents-[''] relative py-20 before:absolute before:left-0 before:top-0 before:block before:h-1/2 before:w-4 before:bg-main-color after:absolute after:bottom-0 after:left-0 after:block after:h-1/2 after:w-4 after:bg-secondary-color">
-        <section class="container relative flex">
-            <div class="flex flex-col relative z-20">
-                <header class="-mr-32 mt-12">
+        class="wrapper before:hidden after:hidden before:contents-[''] after:contents-[''] relative pb-20 pt-44 lg:pt-20 before:absolute before:left-0 before:top-0 lg:before:block before:h-1/2 before:w-4 before:bg-main-color after:absolute after:bottom-0 after:left-0 lg:after:block after:h-1/2 after:w-4 after:bg-secondary-color">
+        <section class="container relative flex flex-col lg:flex-row">
+            <div class="relative z-20 flex flex-col mb-8 items-center">
+                <header class="lg:-mr-32 mt-12 text-center lg:text-left">
                     <h2 class="mb-8 flex w-96 flex-col">
                         <span class="text-sm font-black uppercase text-secondary-color">
                             Properties
                         </span>
                         <span class="text-5xl font-black text-main-color">
                             Our New
-                            <span class="text-secondary-color">
-                                Home
-                            </span>
+                            <span class="text-secondary-color">Home</span>
                             <br />
                             Entries
                         </span>
                     </h2>
                 </header>
-                <a href="" class="button w-52">
-                    Browse Properties
-                </a>
+                <a href="" class="button w-52">Browse Properties</a>
             </div>
 
-            <div class="relative z-10 flex w-4/5 flex-col rounded-[75px] bg-accent-color px-8 py-0">
-                <blockquote class="relative mx-auto w-3/4 px-28 pb-4 pt-20 text-center text-lg text-main-color">
-                    <img src="/src/images/quote.svg" alt="Quote" class="absolute left-0 top-8 z-0 w-48 opacity-60" />
+            <div class="relative z-10 flex w-full lg:w-4/5 flex-col rounded-[75px] bg-accent-color px-8 py-0">
+                <blockquote class="relative mx-auto w-3/4 lg:px-28 pb-4 pt-20 text-center text-lg text-main-color">
+                    <img src="/src/images/quote.svg" alt="Quote"
+                        class="absolute left-0 top-8 z-0 w-20 lg:w-48 opacity-60" />
                     <span class="relative z-10">
-                        Home is the nicest word there is. It is a word that means so much to every one of us, the place
-                        where, when you go there, they have to take you in, where you go to be accepted, loved, and
-                        protected, no matter what you do or what happens outside that door.
+                        Home is the nicest word there is. It is a word that
+                        means so much to every one of us, the place where,
+                        when you go there, they have to take you in, where
+                        you go to be accepted, loved, and protected, no
+                        matter what you do or what happens outside that
+                        door.
                     </span>
                     <footer class="italic text-secondary-color">
                         Laura Ingalls Wilder
@@ -144,12 +138,17 @@
                                 data-tilter>
                                 <div
                                     class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 group-hover:flex">
-                                    <p class="mb-16 mt-auto self-center text-lg text-white flex flex-col gap-y-4">
-                                        This is the content of the hovered house thumbnail.
+                                    <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
+                                        This is the content of the hovered
+                                        house thumbnail.
 
-                                        <span class="text-secondary-color font-bold flex flex-col">
-                                            <span class="text-white font-normal">From</span>
-                                            <span class="text-xl">$45,000</span>
+                                        <span class="flex flex-col font-bold text-secondary-color">
+                                            <span class="font-normal text-white">
+                                                From
+                                            </span>
+                                            <span class="text-xl">
+                                                $45,000
+                                            </span>
                                         </span>
                                     </p>
                                     <a href=""
@@ -173,12 +172,17 @@
                                 data-tilter>
                                 <div
                                     class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 group-hover:flex">
-                                    <p class="mb-16 mt-auto self-center text-lg text-white flex flex-col gap-y-4">
-                                        This is the content of the hovered house thumbnail.
+                                    <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
+                                        This is the content of the hovered
+                                        house thumbnail.
 
-                                        <span class="text-secondary-color font-bold flex flex-col">
-                                            <span class="text-white font-normal">From</span>
-                                            <span class="text-xl">$1,200,000</span>
+                                        <span class="flex flex-col font-bold text-secondary-color">
+                                            <span class="font-normal text-white">
+                                                From
+                                            </span>
+                                            <span class="text-xl">
+                                                $1,200,000
+                                            </span>
                                         </span>
                                     </p>
                                     <a href=""
@@ -203,12 +207,17 @@
                                 data-tilter>
                                 <div
                                     class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 group-hover:flex">
-                                    <p class="mb-16 mt-auto self-center text-lg text-white flex flex-col gap-y-4">
-                                        This is the content of the hovered house thumbnail.
+                                    <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
+                                        This is the content of the hovered
+                                        house thumbnail.
 
-                                        <span class="text-secondary-color font-bold flex flex-col">
-                                            <span class="text-white font-normal">From</span>
-                                            <span class="text-xl">$98,000</span>
+                                        <span class="flex flex-col font-bold text-secondary-color">
+                                            <span class="font-normal text-white">
+                                                From
+                                            </span>
+                                            <span class="text-xl">
+                                                $98,000
+                                            </span>
                                         </span>
                                     </p>
                                     <a href=""
@@ -233,12 +242,17 @@
                                 data-tilter>
                                 <div
                                     class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 group-hover:flex">
-                                    <p class="mb-16 mt-auto self-center text-lg text-white flex flex-col gap-y-4">
-                                        This is the content of the hovered house thumbnail.
+                                    <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
+                                        This is the content of the hovered
+                                        house thumbnail.
 
-                                        <span class="text-secondary-color font-bold flex flex-col">
-                                            <span class="text-white font-normal">From</span>
-                                            <span class="text-xl">$88,000</span>
+                                        <span class="flex flex-col font-bold text-secondary-color">
+                                            <span class="font-normal text-white">
+                                                From
+                                            </span>
+                                            <span class="text-xl">
+                                                $88,000
+                                            </span>
                                         </span>
                                     </p>
                                     <a href=""
@@ -263,12 +277,17 @@
                                 data-tilter>
                                 <div
                                     class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 group-hover:flex">
-                                    <p class="mb-16 mt-auto self-center text-lg text-white flex flex-col gap-y-4">
-                                        This is the content of the hovered house thumbnail.
+                                    <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
+                                        This is the content of the hovered
+                                        house thumbnail.
 
-                                        <span class="text-secondary-color font-bold flex flex-col">
-                                            <span class="text-white font-normal">From</span>
-                                            <span class="text-xl">$128,000</span>
+                                        <span class="flex flex-col font-bold text-secondary-color">
+                                            <span class="font-normal text-white">
+                                                From
+                                            </span>
+                                            <span class="text-xl">
+                                                $128,000
+                                            </span>
                                         </span>
                                     </p>
                                     <a href=""
@@ -300,7 +319,8 @@
                                 stroke-linejoin="round" class="lucide lucide-arrow-left-to-line">
                                 <path d="M3 19V5" />
                                 <path d="m13 6-6 6 6 6" />
-                                <path d="M7 12h14" /></svg>
+                                <path d="M7 12h14" />
+                            </svg>
                         </button>
                         <button class="splide__arrow splide__arrow--next">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -308,7 +328,7 @@
                                 stroke-linejoin="round" class="lucide lucide-arrow-right-to-line">
                                 <path d="M17 12H3" />
                                 <path d="m11 18 6-6-6-6" />
-                                <path d="M21 5v14" /></svg>
+                                <path d="M21 5v14" />
                             </svg>
                         </button>
                     </div>
@@ -358,16 +378,17 @@
                 </header>
                 <div class="mb-4 flex w-9/12 flex-col gap-y-4">
                     <p class="text-main-color">
-                        Numquam et tenetur consequuntur dignissimos quia maxime fugit. Tempora enim recusandae tenetur
-                        molestiae consequatur. Est maxime et laboriosam soluta accusantium consequatur vero sunt.
+                        Numquam et tenetur consequuntur dignissimos quia
+                        maxime fugit. Tempora enim recusandae tenetur
+                        molestiae consequatur. Est maxime et laboriosam
+                        soluta accusantium consequatur vero sunt.
                     </p>
                     <p class="text-main-color">
-                        Enim a animi. Voluptate et quibusdam. Quis maxime animi. Hic quia quibusdam nostrum ea
-                        consectetur quo.
+                        Enim a animi. Voluptate et quibusdam. Quis maxime
+                        animi. Hic quia quibusdam nostrum ea consectetur
+                        quo.
                     </p>
-                    <a href="" class="w-64 button">
-                        Book Now
-                    </a>
+                    <a href="" class="button w-64">Book Now</a>
                 </div>
             </div>
         </section>
@@ -399,12 +420,12 @@
                 </header>
                 <div class="mb-4 flex w-9/12 flex-col gap-y-4">
                     <p class="text-main-color">
-                        Numquam et tenetur consequuntur dignissimos quia maxime fugit. Tempora enim recusandae tenetur
-                        molestiae consequatur. Est maxime et laboriosam soluta accusantium consequatur vero sunt.
+                        Numquam et tenetur consequuntur dignissimos quia
+                        maxime fugit. Tempora enim recusandae tenetur
+                        molestiae consequatur. Est maxime et laboriosam
+                        soluta accusantium consequatur vero sunt.
                     </p>
-                    <a href="" class="button w-64">
-                        Meet Our Agents
-                    </a>
+                    <a href="" class="button w-64">Meet Our Agents</a>
                 </div>
             </div>
 
@@ -488,41 +509,39 @@
                     </h2>
                 </header>
                 <p class="mb-4 text-main-color">
-                    Numquam et tenetur consequuntur dignissimos quia maxime fugit. Tempora enim recusandae tenetur
-                    molestiae consequatur. Est maxime et laboriosam soluta accusantium consequatur vero sunt.
+                    Numquam et tenetur consequuntur dignissimos quia maxime
+                    fugit. Tempora enim recusandae tenetur molestiae
+                    consequatur. Est maxime et laboriosam soluta accusantium
+                    consequatur vero sunt.
                 </p>
                 <a href=""
-                    class="button w-64 transition duration-300 ease-in-out shadow-xl hover:scale-110 hover:shadow-gray-400/75">
+                    class="button w-64 shadow-xl transition duration-300 ease-in-out hover:scale-110 hover:shadow-gray-400/75">
                     Contact Us
                 </a>
             </div>
         </section>
 
-        <span class="block w-1/2 h-[2px] bg-gray-200 mx-auto"></span>
+        <span class="mx-auto block h-[2px] w-1/2 bg-gray-200"></span>
 
         <div class="relative flex justify-center gap-x-16 py-8">
             <div class="flex items-center gap-x-8">
-                <span class="stat-number inline-block text-8xl font-[1000] text-button-normal-color w-36"
+                <span class="stat-number inline-block w-36 text-8xl font-[1000] text-button-normal-color"
                     data-target="512">
                     0
                 </span>
                 <span class="sr-only">312</span>
-                <span class="text-lg">
-                    Properties Sold
-                </span>
+                <span class="text-lg">Properties Sold</span>
             </div>
             <div class="flex items-center gap-x-8">
-                <span class="stat-number inline-block text-8xl font-[1000] text-button-normal-color w-36"
+                <span class="stat-number inline-block w-36 text-8xl font-[1000] text-button-normal-color"
                     data-target="55">
                     0
                 </span>
                 <span class="sr-only">312</span>
-                <span class="text-lg">
-                    Real Estate Agents
-                </span>
+                <span class="text-lg">Real Estate Agents</span>
             </div>
             <div class="flex items-center gap-x-8">
-                <span class="stat-number inline-block text-8xl font-[1000] text-button-normal-color w-36"
+                <span class="stat-number inline-block w-36 text-8xl font-[1000] text-button-normal-color"
                     data-target="312">
                     0
                 </span>
@@ -539,10 +558,12 @@
 
     <section class="grid grid-cols-2 bg-accent-color">
         <!-- Map -->
-        <div id="map" class="flex"><span class="sr-only">Google Maps</span></div>
+        <div id="map" class="flex">
+            <span class="sr-only">Google Maps</span>
+        </div>
 
         <!-- Contact Form & Footer -->
-        <div class="grid grid-cols-2 gap-4 px-16 py-12 items-center">
+        <div class="grid grid-cols-2 items-center gap-4 px-16 py-12">
             <div class="flex">
                 <div class="flex flex-col gap-y-8">
                     <header>
@@ -551,84 +572,105 @@
                                 <span class="text-secondary-color">
                                     Home
                                 </span>
-                                <span class="text-main-color">
-                                    Hunters
-                                </span>
+                                <span class="text-main-color">Hunters</span>
                             </a>
                         </h3>
                     </header>
 
                     <div class="flex flex-col">
-                        <span class="text-sm uppercase font-bold text-secondary-color">Office Address</span>
-                        <span class="text-main-color">123 Coconut St. Manila PH</span>
+                        <span class="text-sm font-bold uppercase text-secondary-color">
+                            Office Address
+                        </span>
+                        <span class="text-main-color">
+                            123 Coconut St. Manila PH
+                        </span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-sm uppercase font-bold text-secondary-color">Contact #</span>
-                        <span class="text-main-color">+63 909 123 4567</span>
+                        <span class="text-sm font-bold uppercase text-secondary-color">
+                            Contact #
+                        </span>
+                        <span class="text-main-color">
+                            +63 909 123 4567
+                        </span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-sm uppercase font-bold text-secondary-color">Email Address</span>
-                        <a href="mailto:homehunters@example.com" text-main-color">homehunters@example.com</a>
+                        <span class="text-sm font-bold uppercase text-secondary-color">
+                            Email Address
+                        </span>
+                        <a href="mailto:homehunters@example.com" class="text-main-color">
+                            homehunters@example.com
+                        </a>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-sm uppercase font-bold text-secondary-color">Office Hours</span>
-                        <a href="mailto:homehunters@example.com" text-main-color">Mon-Fri from 9:00am - 5:00pm</a>
+                        <span class="text-sm font-bold uppercase text-secondary-color">
+                            Office Hours
+                        </span>
+                        <a href="">Mon-Fri from 9:00am - 5:00pm</a>
                     </div>
                 </div>
             </div>
 
             <div class="relative h-full">
                 <form
-                    class="relative overflow-hidden flex flex-col gap-y-4 bg-white rounded-xl w-full shadow-xl shadow-gray-300/50 border border-gray-100 p-8">
-
-                    <h3 class="text-main-color font-bold text-2xl mb-4">Contact Us</h3>
-                    <div class="flex flex-col gap-y-2 w-full">
-                        <label for="name" class="font-bold text-main-color">Name</label>
-                        <input id="name" name="name" type="text" class="rounded-lg px-3 py-2 bg-gray-100" required>
+                    class="relative flex w-full flex-col gap-y-4 overflow-hidden rounded-xl border border-gray-100 bg-white p-8 shadow-xl shadow-gray-300/50">
+                    <h3 class="mb-4 text-2xl font-bold text-main-color">
+                        Contact Us
+                    </h3>
+                    <div class="flex w-full flex-col gap-y-2">
+                        <label for="name" class="font-bold text-main-color">
+                            Name
+                        </label>
+                        <input id="name" name="name" type="text" class="rounded-lg bg-gray-100 px-3 py-2" required />
                     </div>
 
-                    <div class="flex flex-col gap-y-2 w-full">
-                        <label for="email" class="font-bold text-main-color">Email</label>
-                        <input id="email" name="email" type="email" class="rounded-lg px-3 py-2 bg-gray-100" required>
+                    <div class="flex w-full flex-col gap-y-2">
+                        <label for="email" class="font-bold text-main-color">
+                            Email
+                        </label>
+                        <input id="email" name="email" type="email" class="rounded-lg bg-gray-100 px-3 py-2" required />
                     </div>
 
-                    <div class="flex flex-col gap-y-2 w-full">
-                        <label for="phone" class="font-bold text-main-color">Phone</label>
-                        <input id="phone" name="phone" type="number" class="rounded-lg px-3 py-2 bg-gray-100"
-                            placeholder="ex. 9761112222">
+                    <div class="flex w-full flex-col gap-y-2">
+                        <label for="phone" class="font-bold text-main-color">
+                            Phone
+                        </label>
+                        <input id="phone" name="phone" type="number" class="rounded-lg bg-gray-100 px-3 py-2"
+                            placeholder="ex. 9761112222" />
                     </div>
 
-                    <div class="flex flex-col gap-y-2 w-full">
-                        <label for="message" class="font-bold text-main-color">Message</label>
-                        <textarea name="message" id="message" cols="5" rows="5" class="rounded-lg px-3 py-2 bg-gray-100"
+                    <div class="flex w-full flex-col gap-y-2">
+                        <label for="message" class="font-bold text-main-color">
+                            Message
+                        </label>
+                        <textarea name="message" id="message" cols="5" rows="5" class="rounded-lg bg-gray-100 px-3 py-2"
                             required></textarea>
                     </div>
-                    <div class="flex flex-col gap-y-2 w-full">
+                    <div class="flex w-full flex-col gap-y-2">
                         <button
-                            class="bg-button-normal-color shadow-xl text-white py-4 rounded-full transition duration-300 ease-in-out hover:bg-button-hover-color hover:scale-110 hover:shadow-gray-400/75">
+                            class="rounded-full bg-button-normal-color py-4 text-white shadow-xl transition duration-300 ease-in-out hover:scale-110 hover:bg-button-hover-color hover:shadow-gray-400/75">
                             Send Message
                         </button>
                     </div>
                 </form>
             </div>
 
-            <footer class="flex gap-x-3 items-center py-3">
+            <footer class="flex items-center gap-x-3 py-3">
                 <h4>
                     <a href="/" class="text-lg font-extrabold tracking-tighter">
-                        <span class="text-secondary-color">
-                            Home
-                        </span>
-                        <span class="text-main-color">
-                            Hunters
-                        </span>
+                        <span class="text-secondary-color">Home</span>
+                        <span class="text-main-color">Hunters</span>
                     </a>
                 </h4>
                 <p>All Rights Reserved | 2023</p>
             </footer>
 
-            <div class="flex gap-x-4 justify-end">
-                <a href="" class="border-b border-transparent hover:border-main-color">Terms of Service</a>
-                <a href="" class="border-b border-transparent hover:border-main-color">Privacy Policy</a>
+            <div class="flex justify-end gap-x-4">
+                <a href="" class="border-b border-transparent hover:border-main-color">
+                    Terms of Service
+                </a>
+                <a href="" class="border-b border-transparent hover:border-main-color">
+                    Privacy Policy
+                </a>
             </div>
         </div>
     </section>
@@ -643,8 +685,7 @@
         After you sign up, use the following script tag with YOUR_GOOGLE_API_KEY replaced with your actual key.
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY"></script>
     -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJpV42E0IUDurZIWQm2wWPJy9YDNDvt_s
-    "></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJpV42E0IUDurZIWQm2wWPJy9YDNDvt_s"></script>
 
     <!-- Card Tilting Animation (Requires GSAP) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
@@ -654,7 +695,7 @@
     <!-- Carousel Configurations -->
     <script src="/src/scripts/splide.min.js"></script>
     <script>
-        new Splide('.splide', {
+        new Splide(".splide", {
             type: "loop",
             autoplay: true,
             perPage: 3,
@@ -662,7 +703,12 @@
             arrows: true, // turn to true, if you want to show the carousel page arrows.
             gap: 32,
             padding: 24,
-        }, ).mount();
+            breakpoints: {
+                640: {
+                    perPage: 1,
+                },
+            }
+        }).mount();
     </script>
     <!-- End: Carousel Configurations -->
     <script src="/src/scripts/stat-animation.js"></script>
