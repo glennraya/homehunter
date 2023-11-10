@@ -12,22 +12,9 @@ html {
     @apply text-secondary-color;
 }
 
-/* ::-webkit-scrollbar {
-    width: 12px !important;
-    height: 12px !important;
-    background: transparent;
+.nav-link {
+    @apply border-b border-transparent hover:border-white;
 }
-
-::-webkit-scrollbar-thumb {
-    width: 10px !important;
-    height: 10px !important;
-    background: content-box linear-gradient(to bottom, #193e5b, #04edae);
-    border-radius: 17px;
-    border-width: 3px;
-    border-style: solid;
-    border-color: transparent;
-    border-image: initial;
-} */
 
 .button {
     @apply rounded-full bg-button-normal-color py-4 text-center text-white shadow-xl transition duration-300 ease-in-out hover:scale-110 hover:bg-button-hover-color hover:shadow-gray-400/75;

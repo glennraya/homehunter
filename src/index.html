@@ -34,69 +34,84 @@
             </header>
             <!-- Desktop Menu -->
             <div class="hidden flex-col gap-y-4 lg:flex">
-                <ul class="flex justify-end gap-x-4 text-gray-400">
-                    <li class="flex">123 Coconut St. Manila, PH</li>
-                    <li class="flex">+63 0909 123 4567</li>
+                <ul class="flex justify-end gap-x-8 text-gray-400">
+                    <li class="flex items-center gap-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="#FFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-map-pin">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        <span>123 Coconut St. Manila, PH</span>
+                    </li>
+                    <li class="flex items-center gap-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="#FFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-smartphone">
+                            <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                            <path d="M12 18h.01" />
+                        </svg>
+                        <span>+63 0909 123 4567</span>
+                    </li>
                 </ul>
-                <nav class="flex justify-end gap-x-6 text-xl font-medium text-white">
-                    <a href="" class="current-page">Home</a>
-                    <a href="">Properties</a>
-                    <a href="">Services</a>
-                    <a href="">About</a>
-                    <a href="">Sign In</a>
+                <nav class="flex items-center justify-end gap-x-6 text-xl font-medium text-white">
+                    <a href="/" class="current-page">Home</a>
+                    <a href="#" class="nav-link">Properties</a>
+                    <a href="#" class="nav-link">Services</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="#"
+                        class="rounded-full border border-white px-5 py-3 transition duration-300 ease-in-out hover:bg-white hover:text-black">
+                        Sign In
+                    </a>
                 </nav>
             </div>
 
             <!-- Mobile Menu -->
         </div>
     </div>
-    <!-- End: Navigation -->
 
     <!-- Hero Section -->
-    <div class="container flex items-center lg:h-[60%]">
-        <section class="">
-            <div class="my-24 flex flex-col gap-y-4 text-center lg:my-0 lg:text-left">
-                <h1 class="text-4xl font-black lg:text-6xl">
-                    <span class="text-main-color">Your Dream Home.</span>
-                    <br />
-                    <span class="text-secondary-color">
-                        One Step Closer.
-                    </span>
-                </h1>
-                <p class="text-lg">
-                    Your dream home awaits &mdash; let's unlock
-                    <br />
-                    the door to your future together!
-                </p>
+    <div class="container flex flex-col lg:h-[60%] lg:flex-row">
+        <!-- <section> -->
+        <div class="order-2 my-8 flex flex-col gap-y-4 lg:my-0 lg:self-center">
+            <h1 class="text-6xl font-black lg:text-5xl">
+                <span class="text-main-color">Your Dream Home.</span>
+                <br />
+                <span class="text-secondary-color">One Step Closer.</span>
+            </h1>
+            <p class="text-lg">
+                Your dream home awaits &mdash; let's unlock
+                <br />
+                the door to your future together!
+            </p>
 
-                <div class="flex gap-x-4">
-                    <a href=""
-                        class="flex-1 rounded-full border border-main-color py-4 text-center text-main-color hover:bg-main-color hover:text-white">
-                        About Us
-                    </a>
-                    <a href="" class="button flex-1">Search Properties</a>
-                </div>
+            <div class="flex gap-x-4">
+                <a href=""
+                    class="flex-1 rounded-full border border-main-color py-4 text-center text-main-color transition duration-300 ease-in-out hover:scale-110 hover:bg-main-color hover:text-white">
+                    About Us
+                </a>
+                <a href="" class="button flex-1">Search Properties</a>
             </div>
+        </div>
 
-            <div
-                class="after:contents-[''] relative rounded-[75px] bg-gray-800 font-black after:absolute after:left-0 after:top-0 after:hidden after:h-full after:w-full after:bg-gradient-to-br after:from-gray-800 after:via-gray-800/[80%] lg:absolute lg:right-0 lg:top-0 lg:z-0 lg:h-auto lg:w-2/5 lg:rounded-none">
-                <img src="/src/images/home1.jpg" alt="Home Image" class="rounded-[75px] opacity-25 lg:rounded-none" />
+        <!-- Images -->
+        <div
+            class="after:contents-[''] relative order-1 mt-8 h-64 w-64 font-black before:invisible after:invisible after:absolute after:left-0 after:top-0 after:hidden after:h-full after:w-full after:bg-gradient-to-b after:from-gray-900 lg:absolute lg:right-0 lg:top-0 lg:z-0 lg:mt-0 lg:w-1/2 lg:before:visible lg:after:visible lg:after:block lg:h-[540px] lg:shadow-main-color/30 lg:shadow-xl">
+            <img src="/src/images/home1.jpg" alt="Home Image" class="hidden h-full w-full object-cover lg:block" />
 
-                <div class="absolute left-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 transform overflow-hidden rounded-[45px] shadow-xl lg:-bottom-32 lg:-left-32 lg:z-20 lg:h-96 lg:w-96 lg:-translate-x-0 lg:-translate-y-0 lg:transform-none lg:rounded-[75px]"
-                    data-tilter>
-                    <img src="/src/images/home2.jpg" alt="Home Image" />
-                </div>
-            </div>
-        </section>
+            <img src="/src/images/home2.jpg" alt="Home Image"
+                class="absolute h-64 w-64 overflow-hidden rounded-[45px] shadow-xl lg:z-20 xl:h-72 xl:w-72 xl:-top-52 xl:-left-36 lg:-top-48 lg:-left-12 lg:rounded-[75px] lg:relative"
+                data-tilter />
+        </div>
+        <!-- </section> -->
     </div>
-    <!-- End: Hero Section -->
 
     <!-- New Home Entries Section -->
     <div
-        class="wrapper before:hidden after:hidden before:contents-[''] after:contents-[''] relative pb-20 pt-44 lg:pt-20 before:absolute before:left-0 before:top-0 lg:before:block before:h-1/2 before:w-4 before:bg-main-color after:absolute after:bottom-0 after:left-0 lg:after:block after:h-1/2 after:w-4 after:bg-secondary-color">
+        class="wrapper before:contents-[''] after:contents-[''] relative pb-20 pt-8 before:absolute before:left-0 before:top-0 before:hidden before:h-1/2 before:w-4 before:bg-main-color after:absolute after:bottom-0 after:left-0 after:hidden after:h-1/2 after:w-4 after:bg-secondary-color lg:pt-14 lg:before:block lg:after:block">
         <section class="container relative flex flex-col lg:flex-row">
-            <div class="relative z-20 flex flex-col mb-8 items-center">
-                <header class="lg:-mr-32 mt-12 text-center lg:text-left">
+            <div class="relative z-20 mb-8 flex flex-col">
+                <header class="mt-12 lg:-mr-32">
                     <h2 class="mb-8 flex w-96 flex-col">
                         <span class="text-sm font-black uppercase text-secondary-color">
                             Properties
@@ -112,10 +127,10 @@
                 <a href="" class="button w-52">Browse Properties</a>
             </div>
 
-            <div class="relative z-10 flex w-full lg:w-4/5 flex-col rounded-[75px] bg-accent-color px-8 py-0">
-                <blockquote class="relative mx-auto w-3/4 lg:px-28 pb-4 pt-20 text-center text-lg text-main-color">
+            <div class="relative z-10 flex w-full flex-col rounded-[75px] bg-accent-color px-8 py-0 lg:w-4/5">
+                <blockquote class="relative mx-auto w-3/4 pb-4 pt-20 text-center text-lg text-main-color lg:px-8">
                     <img src="/src/images/quote.svg" alt="Quote"
-                        class="absolute left-0 top-8 z-0 w-20 lg:w-48 opacity-60" />
+                        class="absolute left-0 top-8 z-0 w-20 opacity-60 lg:w-48" />
                     <span class="relative z-10">
                         Home is the nicest word there is. It is a word that
                         means so much to every one of us, the place where,
@@ -137,7 +152,7 @@
                             <div class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
                                 data-tilter>
                                 <div
-                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 group-hover:flex">
+                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
                                     <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
                                         This is the content of the hovered
                                         house thumbnail.
@@ -171,7 +186,7 @@
                             <div class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
                                 data-tilter>
                                 <div
-                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 group-hover:flex">
+                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
                                     <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
                                         This is the content of the hovered
                                         house thumbnail.
@@ -206,7 +221,7 @@
                             <div class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
                                 data-tilter>
                                 <div
-                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 group-hover:flex">
+                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
                                     <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
                                         This is the content of the hovered
                                         house thumbnail.
@@ -241,7 +256,7 @@
                             <div class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
                                 data-tilter>
                                 <div
-                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 group-hover:flex">
+                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
                                     <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
                                         This is the content of the hovered
                                         house thumbnail.
@@ -276,7 +291,7 @@
                             <div class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
                                 data-tilter>
                                 <div
-                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 group-hover:flex">
+                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
                                     <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
                                         This is the content of the hovered
                                         house thumbnail.
@@ -310,7 +325,7 @@
                     </div>
                     <!--
                         Carousel Navigation Buttons
-                        NOTE: If you want to show the carousel arrows, change the 'arrows' option in the settings below to 'true'
+                        NOTE: If you want to hide the carousel arrows, change the 'arrows' option in the settings below to 'false'
                     -->
                     <div class="splide__arrows flex justify-center gap-x-4 py-4">
                         <button class="splide__arrow splide__arrow--prev">
@@ -338,17 +353,16 @@
             </div>
         </section>
     </div>
-    <!-- End: New Home Entries Section -->
 
     <!-- Booking Section -->
     <div
-        class="wrapper before:contents-[''] after:contents-[''] relative py-20 before:absolute before:right-0 before:top-0 before:block before:h-1/2 before:w-24 before:bg-main-color after:absolute after:right-16 after:top-16 after:block after:h-24 after:w-24 after:bg-secondary-color">
-        <section class="container grid grid-cols-12 gap-x-16">
-            <div class="relative col-span-5 flex h-[480px] w-full flex-col" data-tilter>
+        class="before:contents-[''] after:contents-[''] relative py-20 before:absolute before:right-0 before:top-0 before:hidden before:h-1/2 before:w-24 before:bg-main-color after:absolute after:right-16 after:top-16 after:hidden after:h-24 after:w-24 after:bg-secondary-color lg:before:top-1/2 lg:before:block lg:before:w-8 lg:before:-translate-x-1/2 lg:before:-translate-y-1/2 lg:before:transform lg:after:right-4 lg:after:top-1/2 lg:after:block lg:after:w-8 lg:after:-translate-x-1/2 lg:after:-translate-y-1/2 lg:after:transform">
+        <section class="container gap-x-16 md:grid md:grid-cols-2 lg:grid-cols-12">
+            <div class="relative flex h-[480px] w-full flex-col lg:col-span-5" data-tilter>
                 <img src="/src/images/house6.jpg" alt="House 6"
                     class="h-[480px] w-full rounded-bl-[75px] rounded-tr-[75px] object-cover" />
                 <div
-                    class="absolute bottom-0 right-0 z-10 flex h-2/4 w-5/12 flex-col items-center justify-center rounded-bl-[75px] rounded-tr-[75px] bg-main-color">
+                    class="absolute bottom-0 right-0 z-10 flex h-2/4 w-3/4 flex-col items-center justify-center rounded-bl-[75px] rounded-tr-[75px] bg-main-color lg:w-9/12">
                     <div class="flex flex-col">
                         <span class="text-2xl font-bold text-secondary-color">
                             Booking Starts at
@@ -360,7 +374,7 @@
                 </div>
             </div>
 
-            <div class="col-span-7 flex flex-col">
+            <div class="flex flex-col lg:col-span-7">
                 <header class="mt-12">
                     <h2 class="relative z-20 mb-8 flex flex-col">
                         <span class="text-sm font-black uppercase text-secondary-color">
@@ -371,12 +385,12 @@
                             <span class="text-secondary-color">
                                 House Tour
                             </span>
-                            <br />
+                            <br class="hidden lg:block" />
                             Appointment
                         </span>
                     </h2>
                 </header>
-                <div class="mb-4 flex w-9/12 flex-col gap-y-4">
+                <div class="mb-4 flex w-full flex-col gap-y-4 lg:w-9/12">
                     <p class="text-main-color">
                         Numquam et tenetur consequuntur dignissimos quia
                         maxime fugit. Tempora enim recusandae tenetur
@@ -393,16 +407,15 @@
             </div>
         </section>
     </div>
-    <!-- End: Booking Section -->
 
     <!-- Real-Estate Agents Section -->
-    <div class="wrapper relative mb-32 mt-60 py-20">
+    <div class="wrapper mb:16 relative mt-16 py-20 lg:mb-32 lg:mt-60">
         <div
             class="before:contents-[''] after:contents-[''] absolute left-0 top-0 z-0 h-full w-full skew-y-[6deg] bg-accent-color before:absolute before:left-0 before:top-0 before:z-10 before:block before:h-2 before:w-1/2 before:bg-main-color after:absolute after:bottom-0 after:right-0 after:z-10 after:block after:h-2 after:w-1/2 after:bg-secondary-color">
         </div>
 
-        <section class="container relative z-10 grid grid-cols-12">
-            <div class="col-span-6 self-center pb-24">
+        <section class="container relative z-10 grid grid-cols-1 md:grid-cols-12 md:gap-5">
+            <div class="order-2 col-span-7 self-center pb-24 md:order-1 lg:col-span-6">
                 <header class="mt-12">
                     <h2 class="relative z-20 mb-8 flex flex-col">
                         <span class="text-sm font-black uppercase text-secondary-color">
@@ -418,7 +431,7 @@
                         </span>
                     </h2>
                 </header>
-                <div class="mb-4 flex w-9/12 flex-col gap-y-4">
+                <div class="mb-4 flex w-full flex-col gap-y-4 lg:w-9/12">
                     <p class="text-main-color">
                         Numquam et tenetur consequuntur dignissimos quia
                         maxime fugit. Tempora enim recusandae tenetur
@@ -430,7 +443,7 @@
             </div>
 
             <!-- Thumbnail Grids -->
-            <div class="col-span-3 col-start-8">
+            <div class="order-1 col-span-5 self-center md:order-2 lg:col-span-5 lg:col-start-8">
                 <!-- Row 1 -->
                 <div class="grid w-full grid-cols-4 gap-4">
                     <div class="col-span-2 h-auto overflow-hidden rounded-xl shadow-lg shadow-gray-400/50" data-tilter>
@@ -485,15 +498,14 @@
             <!-- End: Thumbnail Grids -->
         </section>
     </div>
-    <!-- End: Real-Estate Agents Section -->
 
     <!-- Who We Are Section -->
     <div class="container flex flex-col gap-y-16 py-20">
-        <section class="grid grid-cols-2 gap-16">
+        <section class="grid grid-cols-1 gap-16 pb-8 md:grid-cols-2">
             <!-- Team Image -->
             <div class="flex">
                 <img src="/src/images/who-we-are.jpg" alt="Team"
-                    class="h-8/12 self-center rounded-[75px] object-cover shadow-xl shadow-gray-400/50" />
+                    class="h-8/12 self-center rounded-[75px] object-cover shadow-xl shadow-gray-400/50 md:rounded-[50px]" />
             </div>
 
             <!-- About the Company -->
@@ -521,10 +533,10 @@
             </div>
         </section>
 
-        <span class="mx-auto block h-[2px] w-1/2 bg-gray-200"></span>
+        <span class="mx-auto block h-[2px] w-full bg-gray-200 md:w-1/2"></span>
 
-        <div class="relative flex justify-center gap-x-16 py-8">
-            <div class="flex items-center gap-x-8">
+        <div class="relative grid grid-cols-6 justify-center gap-16 py-8 md:grid-cols-6 md:flex-row lg:grid-cols-3">
+            <div class="col-span-3 flex flex-col items-center gap-x-8 lg:col-span-1 lg:flex-row">
                 <span class="stat-number inline-block w-36 text-8xl font-[1000] text-button-normal-color"
                     data-target="512">
                     0
@@ -532,7 +544,7 @@
                 <span class="sr-only">312</span>
                 <span class="text-lg">Properties Sold</span>
             </div>
-            <div class="flex items-center gap-x-8">
+            <div class="col-span-3 flex flex-col items-center gap-x-8 lg:col-span-1 lg:flex-row">
                 <span class="stat-number inline-block w-36 text-8xl font-[1000] text-button-normal-color"
                     data-target="55">
                     0
@@ -540,7 +552,8 @@
                 <span class="sr-only">312</span>
                 <span class="text-lg">Real Estate Agents</span>
             </div>
-            <div class="flex items-center gap-x-8">
+            <div
+                class="col-span-6 flex flex-col items-center gap-x-8 md:col-span-4 md:col-start-2 lg:col-span-1 lg:flex-row">
                 <span class="stat-number inline-block w-36 text-8xl font-[1000] text-button-normal-color"
                     data-target="312">
                     0
@@ -554,16 +567,16 @@
             </div>
         </div>
     </div>
-    <!-- End: Who Are Section -->
 
-    <section class="grid grid-cols-2 bg-accent-color">
+    <!-- Footer Section -->
+    <section class="grid grid-cols-1 bg-accent-color xl:grid-cols-2">
         <!-- Map -->
-        <div id="map" class="flex">
+        <div id="map" class="flex h-96 xl:h-full">
             <span class="sr-only">Google Maps</span>
         </div>
 
         <!-- Contact Form & Footer -->
-        <div class="grid grid-cols-2 items-center gap-4 px-16 py-12">
+        <div class="grid grid-cols-1 items-center gap-4 px-8 py-12 md:grid-cols-2 lg:px-16">
             <div class="flex">
                 <div class="flex flex-col gap-y-8">
                     <header>
@@ -620,7 +633,10 @@
                         <label for="name" class="font-bold text-main-color">
                             Name
                         </label>
-                        <input id="name" name="name" type="text" class="rounded-lg bg-gray-100 px-3 py-2" required />
+                        <div class="relative w-full">
+                            <input id="name" name="name" type="text" class="w-full rounded-lg bg-gray-100 px-3 py-2"
+                                value="Lana Bakery" required />
+                        </div>
                     </div>
 
                     <div class="flex w-full flex-col gap-y-2">
@@ -643,7 +659,7 @@
                             Message
                         </label>
                         <textarea name="message" id="message" cols="5" rows="5" class="rounded-lg bg-gray-100 px-3 py-2"
-                            required></textarea>
+                            placeholder="Say something nice... Say it slowly." required></textarea>
                     </div>
                     <div class="flex w-full flex-col gap-y-2">
                         <button
@@ -654,24 +670,25 @@
                 </form>
             </div>
 
-            <footer class="flex items-center gap-x-3 py-3">
-                <h4>
-                    <a href="/" class="text-lg font-extrabold tracking-tighter">
-                        <span class="text-secondary-color">Home</span>
-                        <span class="text-main-color">Hunters</span>
+            <footer class="flex flex-col md:col-span-2 md:flex-row md:items-center md:justify-between">
+                <div class="flex items-center justify-center gap-x-3 py-3 lg:justify-normal">
+                    <h4>
+                        <a href="/" class="text-lg font-extrabold tracking-tighter">
+                            <span class="text-secondary-color">Home</span>
+                            <span class="text-main-color">Hunters</span>
+                        </a>
+                    </h4>
+                    <p>All Rights Reserved | 2023</p>
+                </div>
+                <div class="flex justify-center gap-x-4 lg:justify-end">
+                    <a href="" class="border-b border-transparent hover:border-main-color">
+                        Terms of Service
                     </a>
-                </h4>
-                <p>All Rights Reserved | 2023</p>
+                    <a href="" class="border-b border-transparent hover:border-main-color">
+                        Privacy Policy
+                    </a>
+                </div>
             </footer>
-
-            <div class="flex justify-end gap-x-4">
-                <a href="" class="border-b border-transparent hover:border-main-color">
-                    Terms of Service
-                </a>
-                <a href="" class="border-b border-transparent hover:border-main-color">
-                    Privacy Policy
-                </a>
-            </div>
         </div>
     </section>
 
@@ -690,7 +707,6 @@
     <!-- Card Tilting Animation (Requires GSAP) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
     <script src="/src/scripts/card.js"></script>
-    <!-- End: Card Tilting Animation (Requires GSAP) -->
 
     <!-- Carousel Configurations -->
     <script src="/src/scripts/splide.min.js"></script>
@@ -707,12 +723,26 @@
                 640: {
                     perPage: 1,
                 },
-            }
+                768: {
+                    perPage: 1,
+                },
+                1024: {
+                    perPage: 2,
+                },
+                1280: {
+                    perPage: 2,
+                },
+                1536: {
+                    perPage: 3,
+                },
+            },
         }).mount();
     </script>
-    <!-- End: Carousel Configurations -->
+
+    <!-- Stats Animation -->
     <script src="/src/scripts/stat-animation.js"></script>
 
+    <!-- Google Map -->
     <script src="/src/scripts/map.js"></script>
 </body>
 
