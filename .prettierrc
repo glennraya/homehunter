@@ -2,7 +2,6 @@
     "tabWidth": 4,
     "htmlWhitespaceSensitivity": "ignore",
     "bracketSameLine": true,
-    "printWidth": 40,
     "plugins": [
         "prettier-plugin-tailwindcss"
     ]
