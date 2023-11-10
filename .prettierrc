@@ -1,14 +1,9 @@
 {
-    "htmlWhitespaceSensitivity": "css",
-    "printWidth": 40,
     "tabWidth": 4,
-    "useTabs": false,
-    "semi": true,
-    "singleQuote": false,
-    "bracketSpacing": true,
-    "jsxBracketSameLine": false,
-    "editor.formatOnSave": true,
+    "htmlWhitespaceSensitivity": "ignore",
+    "bracketSameLine": true,
+    "printWidth": 40,
     "plugins": [
         "prettier-plugin-tailwindcss"
     ]
-  }
+}
