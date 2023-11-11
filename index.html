@@ -702,7 +702,7 @@
         After you sign up, use the following script tag with YOUR_GOOGLE_API_KEY replaced with your actual key.
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY"></script>
     -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJpV42E0IUDurZIWQm2wWPJy9YDNDvt_s"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key="></script>
 
     <!-- Card Tilting Animation (Requires GSAP) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
@@ -716,9 +716,13 @@
             autoplay: true,
             perPage: 3,
             rewind: true,
-            arrows: true, // turn to true, if you want to show the carousel page arrows.
+            // turn to false, if you don't want to show the carousel page arrows.
+            arrows: true,
             gap: 32,
+
             padding: 24,
+
+            // Responsive breakpoints for the carousel.
             breakpoints: {
                 640: {
                     perPage: 1,
