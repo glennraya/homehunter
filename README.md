@@ -1,6 +1,6 @@
 # HomeHunter - Free Website Landing Page Template
 
-![Project Logo](https://jsonfakery.imgix.net/og-banner.jpg)
+![Project Logo](https://jsonfakery.imgix.net/homehunter-github-social-media-banner.jpg)
 
 ## Table of Contents
 
