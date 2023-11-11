@@ -2,7 +2,11 @@ import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+<<<<<<< HEAD
     darkMode: "media",
+=======
+    darkMode: "class",
+>>>>>>> 4f2071f (Install ViteJS and minor file restructuring)
     content: ["./index.html", "./src/**/*.{html,js}"],
     theme: {
         extend: {
