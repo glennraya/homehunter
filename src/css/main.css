@@ -19,3 +19,11 @@ html {
 .button {
     @apply rounded-full bg-button-normal-color py-4 text-center text-white shadow-xl transition duration-300 ease-in-out hover:scale-110 hover:bg-button-hover-color hover:shadow-gray-400/75;
 }
+
+#videoDialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}

@@ -23,6 +23,24 @@
 </head>
 
 <body class="relative h-screen font-sans text-main-color dark:bg-gray-900">
+    <!-- Youtube Video Dialog -->
+    <div id="videoDialog" class="hidden z-30 bg-black/80 backdrop-blur-sm w-full h-full">
+        <iframe id="youtubeVideo"
+            class="w-1/2 aspect-video absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2"
+            src="https://www.youtube.com/embed/fgFjZEc1o3o" title="Touring a Polygonal House in Antipolo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        <button id="closeButton" type="button" class="mt-8 ml-8 transition duration-300 ease-in-out hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                class="w-12 h-12 text-white">
+                <path fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+                    clip-rule="evenodd" />
+            </svg>
+        </button>
+    </div>
+
     <!-- Navigation -->
     <div class="container">
         <div class="relative z-10 flex items-center justify-between py-4">
@@ -74,12 +92,12 @@
     <div class="container flex flex-col lg:h-[60%] lg:flex-row">
         <!-- <section> -->
         <div class="order-2 my-8 flex flex-col gap-y-4 lg:my-0 lg:self-center">
-            <h1 class="text-6xl font-black lg:text-5xl">
+            <h1 class="text-5xl font-black text-center lg:text-left lg:text-5xl xl:text-6xl">
                 <span class="text-main-color">Your Dream Home.</span>
                 <br />
                 <span class="text-secondary-color">One Step Closer.</span>
             </h1>
-            <p class="text-lg">
+            <p class="text-lg text-center lg:text-left">
                 Your dream home awaits &mdash; let's unlock
                 <br />
                 the door to your future together!
@@ -96,12 +114,23 @@
 
         <!-- Images -->
         <div
-            class="after:contents-[''] relative order-1 mt-8 h-64 w-64 font-black before:invisible after:invisible after:absolute after:left-0 after:top-0 after:hidden after:h-full after:w-full after:bg-gradient-to-b after:from-gray-900 lg:absolute lg:right-0 lg:top-0 lg:z-0 lg:mt-0 lg:w-1/2 lg:before:visible lg:after:visible lg:after:block lg:h-[540px] lg:shadow-main-color/30 lg:shadow-xl">
-            <img src="/src/images/home1.jpg" alt="Home Image" class="hidden h-full w-full object-cover lg:block" />
+            class="mx-auto after:contents-[''] relative order-1 mt-8 h-64 w-64 font-black before:invisible after:invisible after:absolute after:left-0 after:top-0 after:hidden after:h-full after:w-full after:bg-gradient-to-b after:from-gray-900 lg:mx-0 lg:absolute lg:right-0 lg:top-0 lg:z-0 lg:mt-0 lg:w-1/2 lg:before:visible lg:after:visible lg:after:block lg:h-[540px] lg:shadow-main-color/30 lg:shadow-xl">
 
-            <img src="/src/images/home2.jpg" alt="Home Image"
-                class="absolute h-64 w-64 overflow-hidden rounded-[45px] shadow-xl lg:z-20 xl:h-72 xl:w-72 xl:-top-52 xl:-left-36 lg:-top-48 lg:-left-12 lg:rounded-[75px] lg:relative"
-                data-tilter />
+            <img src="/src/images/home1.jpg" alt="Home Image" class="hidden h-full w-full object-cover lg:block" />
+            <span
+                class="inline-block absolute h-64 w-64 overflow-hidden rounded-[45px] shadow-xl lg:z-20 xl:h-72 xl:w-72 xl:-top-52 xl:-left-24 lg:-top-48 lg:-left-12 lg:rounded-[75px] lg:relative"
+                data-tilter>
+                <a href="#" id="videoTrigger" class="inline-block w-full h-full absolute">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-32 h-32 absolute text-white drop-shadow-md shadow-black transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+                        <path fill-rule="evenodd"
+                            d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+
+                <img src="/src/images/home2.jpg" alt="Home Image" />
+            </span>
         </div>
         <!-- </section> -->
     </div>
@@ -598,6 +627,7 @@
                             123 Coconut St. Manila PH
                         </span>
                     </div>
+
                     <div class="flex flex-col">
                         <span class="text-sm font-bold uppercase text-secondary-color">
                             Contact #
@@ -606,6 +636,7 @@
                             +63 909 123 4567
                         </span>
                     </div>
+
                     <div class="flex flex-col">
                         <span class="text-sm font-bold uppercase text-secondary-color">
                             Email Address
@@ -614,6 +645,7 @@
                             homehunters@example.com
                         </a>
                     </div>
+
                     <div class="flex flex-col">
                         <span class="text-sm font-bold uppercase text-secondary-color">
                             Office Hours
@@ -749,6 +781,9 @@
     <!-- Google Map -->
     <script src="/src/scripts/map.js"></script>
     <script type="module" src="/src/scripts/index.js"></script>
+
+    <!-- Youtube Video -->
+    <script src="/src/scripts/youtube.js"></script>
 </body>
 
 </html>
