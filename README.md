@@ -9,11 +9,11 @@
 3. [Pre-requisites](#pre-requisites)
 4. [Installation](#installation)
 5. [Run the dev server](#run-the-dev-server)
-6. [Build for production](#build-for-production)
+6. [Build for production](#build-tailwindcss-for-production)
 
 ## Introduction
 
-This project aims to provide dummy JSON data for use in front-end prototyping. Built with Laravel, React, and Tailwindcss.
+This is a free, open-source website landing template styled using Tailwindcss. You are free to use and modify it as needed.
 
 ## Features
 
