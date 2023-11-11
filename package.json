@@ -1,12 +1,17 @@
 {
-  "devDependencies": {
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.31",
-    "prettier": "^3.0.3",
-    "prettier-plugin-tailwindcss": "^0.5.7",
-    "tailwindcss": "^3.3.5"
-  },
-  "dependencies": {
-    "@splidejs/splide": "^4.1.4"
-  }
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.16",
+        "postcss": "^8.4.31",
+        "prettier": "^3.0.3",
+        "prettier-plugin-tailwindcss": "^0.5.7",
+        "tailwindcss": "^3.3.5",
+        "vite": "^4.5.0"
+    },
+    "dependencies": {
+        "@splidejs/splide": "^4.1.4"
+    }
 }
