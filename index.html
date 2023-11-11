@@ -47,7 +47,7 @@
             <header class="self-end">
                 <a href="/" class="text-2xl font-extrabold tracking-tighter">
                     <span class="text-secondary-color">Home</span>
-                    <span class="text-main-color">Hunter</span>
+                    <span class="text-main-color dark:text-white">Hunter</span>
                 </a>
             </header>
             <!-- Desktop Menu -->
@@ -73,7 +73,14 @@
                     </li>
                 </ul>
                 <nav class="flex items-center justify-end gap-x-6 text-xl font-medium text-white">
-                    <a href="/" class="current-page">Home</a>
+                    <a href="/" class="current-page">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-8 h-8 current-page">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                        </svg>
+                        <span class="sr-only">Home Page</span>
+                    </a>
                     <a href="#" class="nav-link">Properties</a>
                     <a href="#" class="nav-link">Services</a>
                     <a href="#" class="nav-link">About</a>
@@ -93,11 +100,11 @@
         <!-- <section> -->
         <div class="order-2 my-8 flex flex-col gap-y-4 lg:my-0 lg:self-center">
             <h1 class="text-5xl font-black text-center lg:text-left lg:text-5xl xl:text-6xl">
-                <span class="text-main-color">Your Dream Home.</span>
+                <span class="text-main-color dark:text-white">Your Dream Home.</span>
                 <br />
                 <span class="text-secondary-color">One Step Closer.</span>
             </h1>
-            <p class="text-lg text-center lg:text-left">
+            <p class="text-lg text-center lg:text-left dark:text-white">
                 Your dream home awaits &mdash; let's unlock
                 <br />
                 the door to your future together!
@@ -105,7 +112,7 @@
 
             <div class="flex gap-x-4">
                 <a href=""
-                    class="flex-1 rounded-full border border-main-color py-4 text-center text-main-color transition duration-300 ease-in-out hover:scale-110 hover:bg-main-color hover:text-white">
+                    class="flex-1 rounded-full border border-main-color py-4 text-center text-main-color transition duration-300 ease-in-out hover:scale-110 hover:bg-main-color hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black">
                     About Us
                 </a>
                 <a href="" class="button flex-1">Search Properties</a>
@@ -145,7 +152,7 @@
                         <span class="text-sm font-black uppercase text-secondary-color">
                             Properties
                         </span>
-                        <span class="text-5xl font-black text-main-color">
+                        <span class="text-5xl font-black text-main-color dark:text-white">
                             Our New
                             <span class="text-secondary-color">Home</span>
                             <br />
@@ -156,11 +163,12 @@
                 <a href="" class="button w-52">Browse Properties</a>
             </div>
 
-            <div class="relative z-10 flex w-full flex-col rounded-[75px] bg-accent-color px-8 py-0 lg:w-4/5">
+            <div
+                class="relative z-10 flex w-full flex-col rounded-[75px] bg-accent-color px-8 py-0 lg:w-4/5 dark:bg-gray-800">
                 <blockquote class="relative mx-auto w-3/4 pb-4 pt-20 text-center text-lg text-main-color lg:px-8">
                     <img src="/src/images/quote.svg" alt="Quote"
                         class="absolute left-0 top-8 z-0 w-20 opacity-60 lg:w-48" />
-                    <span class="relative z-10">
+                    <span class="relative z-10 dark:text-white">
                         Home is the nicest word there is. It is a word that
                         means so much to every one of us, the place where,
                         when you go there, they have to take you in, where
@@ -358,21 +366,19 @@
                     -->
                     <div class="splide__arrows flex justify-center gap-x-4 py-4">
                         <button class="splide__arrow splide__arrow--prev">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-arrow-left-to-line">
-                                <path d="M3 19V5" />
-                                <path d="m13 6-6 6 6 6" />
-                                <path d="M7 12h14" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 text-white dark:text-secondary-color">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                             </svg>
+
+
                         </button>
                         <button class="splide__arrow splide__arrow--next">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-arrow-right-to-line">
-                                <path d="M17 12H3" />
-                                <path d="m11 18 6-6-6-6" />
-                                <path d="M21 5v14" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 text-white dark:text-secondary-color">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                             </svg>
                         </button>
                     </div>
@@ -409,7 +415,7 @@
                         <span class="text-sm font-black uppercase text-secondary-color">
                             Booking
                         </span>
-                        <span class="text-5xl font-black text-main-color">
+                        <span class="text-5xl font-black text-main-color dark:text-white">
                             Book Your
                             <span class="text-secondary-color">
                                 House Tour
@@ -419,14 +425,14 @@
                         </span>
                     </h2>
                 </header>
-                <div class="mb-4 flex w-full flex-col gap-y-4 lg:w-9/12">
-                    <p class="text-main-color">
+                <div class="mb-4 flex w-full flex-col gap-y-4 text-lg text-main-color lg:w-9/12 dark:text-white">
+                    <p>
                         Numquam et tenetur consequuntur dignissimos quia
                         maxime fugit. Tempora enim recusandae tenetur
                         molestiae consequatur. Est maxime et laboriosam
                         soluta accusantium consequatur vero sunt.
                     </p>
-                    <p class="text-main-color">
+                    <p>
                         Enim a animi. Voluptate et quibusdam. Quis maxime
                         animi. Hic quia quibusdam nostrum ea consectetur
                         quo.
@@ -440,7 +446,7 @@
     <!-- Real-Estate Agents Section -->
     <div class="wrapper mb:16 relative mt-16 py-20 lg:mb-32 lg:mt-60">
         <div
-            class="before:contents-[''] after:contents-[''] absolute left-0 top-0 z-0 h-full w-full skew-y-[3deg] bg-accent-color before:absolute before:left-0 before:top-0 before:z-10 before:block before:h-12 before:w-1/2 before:bg-main-color after:absolute after:bottom-0 after:right-0 after:z-10 after:block after:h-12 after:w-1/2 after:bg-secondary-color">
+            class="before:contents-[''] after:contents-[''] absolute left-0 top-0 z-0 h-full w-full skew-y-[3deg] bg-accent-color before:absolute before:left-0 before:top-0 before:z-10 before:block before:h-12 before:w-1/2 before:bg-main-color after:absolute after:bottom-0 after:right-0 after:z-10 after:block after:h-12 after:w-1/2 after:bg-secondary-color dark:bg-gray-800">
         </div>
 
         <section class="container relative z-10 grid grid-cols-1 md:grid-cols-12 md:gap-5">
@@ -450,7 +456,7 @@
                         <span class="text-sm font-black uppercase text-secondary-color">
                             Meet Our Expert Agents
                         </span>
-                        <span class="text-5xl font-black text-main-color">
+                        <span class="text-5xl font-black text-main-color dark:text-white">
                             Our Team of
                             <span class="text-secondary-color">
                                 Professional
@@ -461,7 +467,7 @@
                     </h2>
                 </header>
                 <div class="mb-4 flex w-full flex-col gap-y-4 lg:w-9/12">
-                    <p class="text-main-color">
+                    <p class="text-main-color text-lg dark:text-white">
                         Numquam et tenetur consequuntur dignissimos quia
                         maxime fugit. Tempora enim recusandae tenetur
                         molestiae consequatur. Est maxime et laboriosam
@@ -475,15 +481,14 @@
             <div class="order-1 col-span-5 self-center scale-95 md:order-2 lg:col-span-5 lg:col-start-7">
                 <!-- Row 1 -->
                 <div class="grid w-full grid-cols-4 gap-4">
-                    <div class="col-span-2 h-auto overflow-hidden rounded-xl shadow-lg shadow-gray-400/50" data-tilter>
+                    <div class="col-span-2 h-auto overflow-hidden rounded-xl agent-grid-shadow" data-tilter>
                         <img src="/src/images/human1.jpg" alt="Avatar" />
                     </div>
                     <div class="flex h-auto flex-col justify-end">
-                        <div class="h-1/2 w-full rounded-xl bg-white shadow-lg shadow-gray-300/50" data-tilter></div>
+                        <div class="h-1/2 w-full rounded-xl bg-white agent-grid-shadow" data-tilter></div>
                     </div>
                     <div class="flex h-auto flex-col justify-end">
-                        <div class="h-1/2 w-full overflow-hidden rounded-xl bg-green-300 shadow-lg shadow-gray-400/50"
-                            data-tilter>
+                        <div class="h-1/2 w-full overflow-hidden rounded-xl bg-green-300 agent-grid-shadow" data-tilter>
                             <img src="/src/images/human2.jpg" alt="Avatar" class="h-full w-full object-cover" />
                         </div>
                     </div>
@@ -493,21 +498,21 @@
                 <!-- Row 2 -->
                 <div class="mt-4 grid w-full grid-cols-4 gap-4">
                     <div class="col-span-1 flex flex-col gap-4">
-                        <div class="h-1/2 w-full rounded-xl bg-[#0FFC19] shadow-lg shadow-gray-400/50" data-tilter>
+                        <div class="h-1/2 w-full rounded-xl bg-[#0FFC19] agent-grid-shadow" data-tilter>
                         </div>
-                        <div class="h-auto w-full overflow-hidden rounded-xl shadow-lg shadow-gray-400/50" data-tilter>
+                        <div class="h-auto w-full overflow-hidden rounded-xl agent-grid-shadow" data-tilter>
                             <img src="/src/images/human3.jpg" alt="Avatar" />
                         </div>
                     </div>
-                    <div class="col-span-2 h-auto overflow-hidden rounded-xl shadow-lg shadow-gray-400/50" data-tilter>
+                    <div class="col-span-2 h-auto overflow-hidden rounded-xl agent-grid-shadow" data-tilter>
                         <img src="/src/images/human4.jpg" alt="Avatar" />
                     </div>
 
                     <div class="col-span-1 flex flex-col gap-4">
-                        <div class="h-auto w-full overflow-hidden rounded-xl shadow-lg shadow-gray-400/50" data-tilter>
+                        <div class="h-auto w-full overflow-hidden rounded-xl agent-grid-shadow" data-tilter>
                             <img src="/src/images/human5.jpg" alt="Avatar" />
                         </div>
-                        <div class="h-1/2 w-full rounded-xl bg-[#4FAFF5] shadow-lg shadow-gray-400/50" data-tilter>
+                        <div class="h-1/2 w-full rounded-xl bg-[#4FAFF5] agent-grid-shadow" data-tilter>
                         </div>
                     </div>
                 </div>
