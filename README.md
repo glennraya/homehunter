@@ -8,8 +8,8 @@
 2. [Features](#features)
 3. [Pre-requisites](#pre-requisites)
 4. [Installation](#installation)
-5. [Run the dev server](#devserver)
-6. [Build for production](#production)
+5. [Run the dev server](#run-the-dev-server)
+6. [Build for production](#build-for-production)
 
 ## Introduction
 
