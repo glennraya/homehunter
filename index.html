@@ -18,8 +18,10 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;0,9..40,1000;1,9..40,800&display=swap"
         rel="stylesheet" />
 
-    <link rel="stylesheet" href="/src/css/splide-core.min.css" />
-    <link rel="stylesheet" href="./src/css/main.css" />
+    <link rel="stylesheet" href="css/splide-core.min.css" />
+    <link rel="stylesheet" href="/src/main.css" />
+    <!-- ViteJS entry point -->
+    <script type="module" src="/src/index.js"></script>
 </head>
 
 <body class="relative h-screen font-sans text-main-color dark:bg-gray-900">
@@ -123,7 +125,7 @@
         <div
             class="mx-auto after:contents-[''] relative order-1 mt-8 h-64 w-64 font-black before:invisible after:invisible after:absolute after:left-0 after:top-0 after:hidden after:h-full after:w-full after:bg-gradient-to-b after:from-gray-900 lg:mx-0 lg:absolute lg:right-0 lg:top-0 lg:z-0 lg:mt-0 lg:w-1/2 lg:before:visible lg:after:visible lg:after:block lg:h-[540px] lg:shadow-main-color/30 lg:shadow-xl">
 
-            <img src="/src/images/home1.jpg" alt="Home Image" class="hidden h-full w-full object-cover lg:block" />
+            <img src="/images/home1.jpg" alt="Home Image" class="hidden h-full w-full object-cover lg:block" />
             <span
                 class="inline-block absolute h-64 w-64 overflow-hidden rounded-[45px] shadow-xl lg:z-20 xl:h-72 xl:w-72 xl:-top-52 xl:-left-24 lg:-top-48 lg:-left-12 lg:rounded-[75px] lg:relative"
                 data-tilter>
@@ -136,7 +138,7 @@
                     </svg>
                 </a>
 
-                <img src="/src/images/home2.jpg" alt="Home Image" />
+                <img src="/images/home2.jpg" alt="Home Image" />
             </span>
         </div>
         <!-- </section> -->
@@ -166,7 +168,7 @@
             <div
                 class="relative z-10 flex w-full flex-col rounded-[75px] bg-accent-color px-8 py-0 lg:w-4/5 dark:bg-gray-800">
                 <blockquote class="relative mx-auto w-3/4 pb-4 pt-20 text-center text-lg text-main-color lg:px-8">
-                    <img src="/src/images/quote.svg" alt="Quote"
+                    <img src="/images/quote.svg" alt="Quote"
                         class="absolute left-0 top-8 z-0 w-20 opacity-60 lg:w-48" />
                     <span class="relative z-10 dark:text-white">
                         Home is the nicest word there is. It is a word that
@@ -216,7 +218,7 @@
                                         </span>
                                     </a>
                                 </div>
-                                <img src="/src/images/house.jpg" alt="House image" class="h-full w-full object-cover" />
+                                <img src="/images/house.jpg" alt="House image" class="h-full w-full object-cover" />
                             </div>
 
                             <!-- Item 2 -->
@@ -250,8 +252,7 @@
                                         </span>
                                     </a>
                                 </div>
-                                <img src="/src/images/house2.jpg" alt="House image"
-                                    class="h-full w-full object-cover" />
+                                <img src="/images/house2.jpg" alt="House image" class="h-full w-full object-cover" />
                             </div>
 
                             <!-- Item 3 -->
@@ -285,8 +286,7 @@
                                         </span>
                                     </a>
                                 </div>
-                                <img src="/src/images/house3.jpg" alt="House image"
-                                    class="h-full w-full object-cover" />
+                                <img src="/images/house3.jpg" alt="House image" class="h-full w-full object-cover" />
                             </div>
 
                             <!-- Item 4 -->
@@ -320,8 +320,7 @@
                                         </span>
                                     </a>
                                 </div>
-                                <img src="/src/images/house4.jpg" alt="House image"
-                                    class="h-full w-full object-cover" />
+                                <img src="/images/house4.jpg" alt="House image" class="h-full w-full object-cover" />
                             </div>
 
                             <!-- Item 5 -->
@@ -355,8 +354,7 @@
                                         </span>
                                     </a>
                                 </div>
-                                <img src="/src/images/house5.jpg" alt="House image"
-                                    class="h-full w-full object-cover" />
+                                <img src="/images/house5.jpg" alt="House image" class="h-full w-full object-cover" />
                             </div>
                         </div>
                     </div>
@@ -394,7 +392,7 @@
         class="before:contents-[''] after:contents-[''] relative py-20 before:absolute before:right-0 before:top-0 before:hidden before:h-1/2 before:w-24 before:bg-main-color after:absolute after:right-16 after:top-16 after:hidden after:h-24 after:w-24 after:bg-secondary-color lg:before:top-1/2 lg:before:block lg:before:w-8 lg:before:-translate-x-1/2 lg:before:-translate-y-1/2 lg:before:transform lg:after:right-4 lg:after:top-1/2 lg:after:block lg:after:w-8 lg:after:-translate-x-1/2 lg:after:-translate-y-1/2 lg:after:transform">
         <section class="container gap-x-16 md:grid md:grid-cols-2 lg:grid-cols-12">
             <div class="relative flex h-[480px] w-full flex-col lg:col-span-5" data-tilter>
-                <img src="/src/images/house6.jpg" alt="House 6"
+                <img src="/images/house6.jpg" alt="House 6"
                     class="h-[480px] w-full rounded-bl-[75px] rounded-tr-[75px] object-cover" />
                 <div
                     class="absolute bottom-0 right-0 z-10 flex h-2/4 w-3/4 flex-col items-center justify-center rounded-bl-[75px] rounded-tr-[75px] bg-main-color lg:w-9/12">
@@ -482,14 +480,14 @@
                 <!-- Row 1 -->
                 <div class="grid w-full grid-cols-4 gap-4">
                     <div class="col-span-2 h-auto overflow-hidden rounded-xl agent-grid-shadow" data-tilter>
-                        <img src="/src/images/human1.jpg" alt="Avatar" />
+                        <img src="/images/human1.jpg" alt="Avatar" />
                     </div>
                     <div class="flex h-auto flex-col justify-end">
                         <div class="h-1/2 w-full rounded-xl bg-white agent-grid-shadow" data-tilter></div>
                     </div>
                     <div class="flex h-auto flex-col justify-end">
                         <div class="h-1/2 w-full overflow-hidden rounded-xl bg-green-300 agent-grid-shadow" data-tilter>
-                            <img src="/src/images/human2.jpg" alt="Avatar" class="h-full w-full object-cover" />
+                            <img src="/images/human2.jpg" alt="Avatar" class="h-full w-full object-cover" />
                         </div>
                     </div>
                 </div>
@@ -501,16 +499,16 @@
                         <div class="h-1/2 w-full rounded-xl bg-[#0FFC19] agent-grid-shadow" data-tilter>
                         </div>
                         <div class="h-auto w-full overflow-hidden rounded-xl agent-grid-shadow" data-tilter>
-                            <img src="/src/images/human3.jpg" alt="Avatar" />
+                            <img src="/images/human3.jpg" alt="Avatar" />
                         </div>
                     </div>
                     <div class="col-span-2 h-auto overflow-hidden rounded-xl agent-grid-shadow" data-tilter>
-                        <img src="/src/images/human4.jpg" alt="Avatar" />
+                        <img src="/images/human4.jpg" alt="Avatar" />
                     </div>
 
                     <div class="col-span-1 flex flex-col gap-4">
                         <div class="h-auto w-full overflow-hidden rounded-xl agent-grid-shadow" data-tilter>
-                            <img src="/src/images/human5.jpg" alt="Avatar" />
+                            <img src="/images/human5.jpg" alt="Avatar" />
                         </div>
                         <div class="h-1/2 w-full rounded-xl bg-[#4FAFF5] agent-grid-shadow" data-tilter>
                         </div>
@@ -524,7 +522,7 @@
                         <div class="h-1/2 w-full rounded-xl bg-white agent-grid-shadow" data-tilter></div>
                     </div>
                     <div class="col-span-2 h-auto overflow-hidden rounded-xl agent-grid-shadow" data-tilter>
-                        <img src="/src/images/human6.jpg" alt="Avatar" />
+                        <img src="/images/human6.jpg" alt="Avatar" />
                     </div>
                 </div>
                 <!-- End: Row 3 -->
@@ -538,7 +536,7 @@
         <section class="grid grid-cols-1 gap-16 pb-8 md:grid-cols-2">
             <!-- Team Image -->
             <div class="flex">
-                <img src="/src/images/who-we-are.jpg" alt="Team"
+                <img src="/images/who-we-are.jpg" alt="Team"
                     class="h-8/12 self-center rounded-[75px] object-cover shadow-xl shadow-gray-400/50 dark:shadow-none md:rounded-[50px]" />
             </div>
 
@@ -733,50 +731,16 @@
         </div>
     </section>
 
-    <!-- ViteJS entry point -->
-    <script type="module" src="/src/scripts/index.js"></script>
-
     <!-- Card Tilting Animation (Requires GSAP) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
-    <script src="/src/scripts/card.js"></script>
+    <script src="scripts/card.js"></script>
 
     <!-- SplideJS Carousel Plugin and Configurations -->
-    <script src="/src/scripts/splide.min.js"></script>
-    <script>
-        new Splide(".splide", {
-            type: "loop",
-            autoplay: true,
-            perPage: 3,
-            rewind: true,
-            // turn to false, if you don't want to show the carousel page arrows.
-            arrows: true,
-            gap: 32,
-
-            padding: 24,
-
-            // Responsive breakpoints for the carousel.
-            breakpoints: {
-                640: {
-                    perPage: 1,
-                },
-                768: {
-                    perPage: 1,
-                },
-                1024: {
-                    perPage: 2,
-                },
-                1280: {
-                    perPage: 2,
-                },
-                1536: {
-                    perPage: 3,
-                },
-            },
-        }).mount();
-    </script>
+    <script src="scripts/splide.min.js"></script>
+    <script src="scripts/carousel.js"></script>
 
     <!-- Stats Animation -->
-    <script src="/src/scripts/stat-animation.js"></script>
+    <script src="scripts/stat-animation.js"></script>
 
     <!-- Google Map -->
     <!--
@@ -790,10 +754,10 @@
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY"></script>
     -->
     <script src="https://maps.googleapis.com/maps/api/js?key="></script>
-    <script src="/src/scripts/map.js"></script>
+    <script src="scripts/map.js"></script>
 
     <!-- Youtube Video -->
-    <script src="/src/scripts/youtube.js"></script>
+    <script src="scripts/youtube.js"></script>
 </body>
 
 </html>
