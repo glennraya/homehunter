@@ -13,7 +13,7 @@
 3. [Pre-requisites](#pre-requisites)
 4. [Installation](#installation)
 5. [Run the dev server](#run-the-dev-server)
-6. [Build for production](#build-tailwindcss-for-production)
+6. [Build for production](#build-for-production)
 
 ## Introduction
 
@@ -51,7 +51,7 @@ npm install
 npm run dev
 ```
 
-## Build Tailwindcss for production
+## Build for roduction
 
 ```bash
 npm run build
