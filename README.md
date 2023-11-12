@@ -2,6 +2,10 @@
 
 ![Project Logo](https://jsonfakery.imgix.net/homehunter-github-social-media-banner.jpg)
 
+## Live Demo
+
+[Check it out](https://homehunter.jsonfakery.com)
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
