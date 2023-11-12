@@ -51,7 +51,7 @@ npm install
 npm run dev
 ```
 
-## Build for roduction
+## Build for production
 
 ```bash
 npm run build
