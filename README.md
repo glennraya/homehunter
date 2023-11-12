@@ -13,7 +13,7 @@
 
 ## Introduction
 
-This is a free, open-source website landing template styled using Tailwindcss. You are free to use and modify it as needed.
+This is a free, open-source website landing template styled using Tailwindcss leveraging ViteJS for asset bundling. Feel free to use and adapt it according to your requirements. The template is in plain HTML5, so you could easily integrate this to any front-end framework of your choice.
 
 ## Features
 
@@ -25,6 +25,7 @@ This is a free, open-source website landing template styled using Tailwindcss. Y
 
 - NodeJS 16+
 - NPM 8+
+- ViteJS 4+
 
 ## Installation
 
