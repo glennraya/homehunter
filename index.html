@@ -25,6 +25,21 @@
     <link rel="stylesheet" href="/src/main.css" />
     <!-- ViteJS entry point -->
     <script type="module" src="/src/index.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia(
+                    '(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark')
+                var element = document.getElementById("dark-btn");
+                element.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark')
+                var element = document.getElementById("light-btn");
+                element.classList.add('hidden');
+            }
+        });
+    </script>
 </head>
 
 <body class="relative h-screen font-sans text-main-color dark:bg-gray-900">
@@ -78,33 +93,50 @@
                         <span>+63 0909 123 4567</span>
                     </li>
                 </ul>
-                <nav
-                    class="flex flex-col items-center justify-end gap-x-6 gap-y-3 text-4xl font-medium text-white lg:text-xl lg:flex-row">
-                    <a href="/" class="current-page" title="Home Page">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-12 h-12 lg:w-8 lg:h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                        </svg>
-                        <span class="sr-only">Home Page</span>
-                    </a>
-                    <a href="#" class="nav-link" title="Available Properties">Properties</a>
-                    <a href="#" class="nav-link" title="Services Offered">Services</a>
-                    <a href="#" class="nav-link" title="About Us">About</a>
-                    <a href="#"
-                        class="rounded-full border border-white px-5 py-3 transition duration-300 ease-in-out hover:bg-white hover:text-black"
-                        title="Sign In to Dashboard">
-                        Sign In
-                    </a>
-                    <button id="menu-close" class="lg:hidden transition duration-300 ease-in-out hover:scale-110"
-                        title="Close menu">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
-                            stroke="currentColor" class="w-16 h-16">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <div class="flex gap-x-6">
+                    <nav
+                        class="flex flex-col items-center justify-end gap-x-6 gap-y-3 text-4xl font-medium text-white lg:text-xl lg:flex-row">
+                        <a href="/" class="current-page" title="Home Page">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-12 h-12 lg:w-8 lg:h-8">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                            </svg>
+                            <span class="sr-only">Home Page</span>
+                        </a>
+                        <a href="#" class="nav-link" title="Available Properties">Properties</a>
+                        <a href="#" class="nav-link" title="Services Offered">Services</a>
+                        <a href="#" class="nav-link" title="About Us">About</a>
+                        <a href="#"
+                            class="rounded-full border border-white px-5 py-3 transition duration-300 ease-in-out hover:bg-white hover:text-black"
+                            title="Sign In to Dashboard">
+                            Sign In
+                        </a>
+                        <button id="menu-close" class="lg:hidden transition duration-300 ease-in-out hover:scale-110"
+                            title="Close menu">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                                stroke="currentColor" class="w-16 h-16">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </button>
+                    </nav>
+                    <button id="dark-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-6 h-6 text-white">
+                            <path
+                                d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
                         </svg>
                     </button>
-                </nav>
+                    <button id="light-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-6 h-6 dark:text-white">
+                            <path fill-rule="evenodd"
+                                d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
             </div>
 
             <!-- Mobile Menu Button -->
@@ -117,6 +149,8 @@
                 </svg>
 
             </button>
+
+
         </div>
     </div>
 
