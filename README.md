@@ -17,7 +17,7 @@ This is a free, open-source website landing template styled using Tailwindcss le
 
 ## Features
 
-- **Full Responsive**: The template is fully responsive.
+- **Fully Responsive**: The template is fully responsive.
 - **Light and Dark Mode**: Supports light and dark mode.
 - **Free to Use**: Not much to be said about this. 🫰
 
