@@ -24,6 +24,10 @@ html {
     @apply shadow-lg shadow-gray-300/50 dark:shadow-none;
 }
 
+.avatars {
+    @apply inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-gray-400;
+}
+
 #videoDialog {
     /* Other styling as needed */
     position: fixed;
@@ -39,4 +43,20 @@ html {
 #videoDialog.visible {
     display: block;
     opacity: 1;
+}
+
+/* Avatar grid animation */
+@keyframes scaleAnimation {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+}
+
+.animated {
+    z-index: 30 !important;
+    animation: scaleAnimation 800ms ease forwards;
 }

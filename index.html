@@ -29,7 +29,7 @@
 
 <body class="relative h-screen font-sans text-main-color dark:bg-gray-900">
     <!-- Youtube Video Dialog -->
-    <div id="videoDialog" class="hidden z-30 bg-black/80 backdrop-blur-sm w-full h-full">
+    <div id="videoDialog" class="hidden z-40 bg-black/80 backdrop-blur-sm w-full h-full">
         <iframe id="youtubeVideo"
             class="w-1/2 aspect-video absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2"
             src="https://www.youtube.com/embed/fgFjZEc1o3o" title="Touring a Polygonal House in Antipolo"
@@ -48,16 +48,17 @@
 
     <!-- Navigation -->
     <div class="container">
-        <div class="relative z-10 flex items-center justify-between py-4">
-            <header class="self-end">
+        <div class="relative z-30 flex items-center justify-between py-4">
+            <header class="self-center lg:self-end">
                 <a href="/" class="text-2xl font-extrabold tracking-tighter">
                     <span class="text-secondary-color">Home</span>
                     <span class="text-main-color dark:text-white">Hunter</span>
                 </a>
             </header>
             <!-- Desktop Menu -->
-            <div class="hidden flex-col gap-y-4 lg:flex">
-                <ul class="flex justify-end gap-x-8 text-gray-400">
+            <div id="menu"
+                class="fixed hidden top-0 left-0 z-30 w-full h-screen flex-col gap-y-4 bg-gray-800 lg:bg-transparent lg:w-auto lg:h-auto lg:relative lg:flex">
+                <ul class="flex justify-center gap-x-8 text-gray-400 my-8 lg:my-0 lg:justify-end">
                     <li class="flex items-center gap-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="#FFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
@@ -77,26 +78,45 @@
                         <span>+63 0909 123 4567</span>
                     </li>
                 </ul>
-                <nav class="flex items-center justify-end gap-x-6 text-xl font-medium text-white">
-                    <a href="/" class="current-page">
+                <nav
+                    class="flex flex-col items-center justify-end gap-x-6 gap-y-3 text-4xl font-medium text-white lg:text-xl lg:flex-row">
+                    <a href="/" class="current-page" title="Home Page">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-8 h-8 current-page">
+                            stroke="currentColor" class="w-12 h-12 lg:w-8 lg:h-8">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                         </svg>
                         <span class="sr-only">Home Page</span>
                     </a>
-                    <a href="#" class="nav-link">Properties</a>
-                    <a href="#" class="nav-link">Services</a>
-                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link" title="Available Properties">Properties</a>
+                    <a href="#" class="nav-link" title="Services Offered">Services</a>
+                    <a href="#" class="nav-link" title="About Us">About</a>
                     <a href="#"
-                        class="rounded-full border border-white px-5 py-3 transition duration-300 ease-in-out hover:bg-white hover:text-black">
+                        class="rounded-full border border-white px-5 py-3 transition duration-300 ease-in-out hover:bg-white hover:text-black"
+                        title="Sign In to Dashboard">
                         Sign In
                     </a>
+                    <button id="menu-close" class="lg:hidden transition duration-300 ease-in-out hover:scale-110"
+                        title="Close menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                            stroke="currentColor" class="w-16 h-16">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </button>
                 </nav>
             </div>
 
-            <!-- Mobile Menu -->
+            <!-- Mobile Menu Button -->
+            <button id="menu-open" class="lg:hidden" title="Open Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="w-12 h-12 text-white">
+                    <path fill-rule="evenodd"
+                        d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                        clip-rule="evenodd" />
+                </svg>
+
+            </button>
         </div>
     </div>
 
@@ -151,7 +171,7 @@
     <div
         class="wrapper before:contents-[''] after:contents-[''] relative pb-20 pt-8 before:absolute before:left-0 before:top-0 before:hidden before:h-1/2 before:w-4 before:bg-main-color after:absolute after:bottom-0 after:left-0 after:hidden after:h-1/2 after:w-4 after:bg-secondary-color lg:pt-14 lg:before:block lg:after:block">
         <section class="container relative flex flex-col lg:flex-row">
-            <div class="relative z-20 mb-8 flex flex-col">
+            <div class="relative mb-8 flex flex-col lg:z-20">
                 <header class="mt-12 lg:-mr-32">
                     <h2 class="mb-8 flex w-96 flex-col">
                         <span class="text-sm font-black uppercase text-secondary-color">
@@ -368,7 +388,7 @@
                     <div class="splide__arrows flex justify-center gap-x-4 py-4">
                         <button class="splide__arrow splide__arrow--prev">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6 text-white dark:text-secondary-color">
+                                stroke="currentColor" class="w-6 h-6 text-main-color dark:text-secondary-color">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                             </svg>
@@ -377,7 +397,7 @@
                         </button>
                         <button class="splide__arrow splide__arrow--next">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6 text-white dark:text-secondary-color">
+                                stroke="currentColor" class="w-6 h-6 text-main-color dark:text-secondary-color">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                             </svg>
@@ -398,7 +418,7 @@
                 <img src="/images/house6.jpg" alt="House 6"
                     class="h-[480px] w-full rounded-bl-[75px] rounded-tr-[75px] object-cover" />
                 <div
-                    class="absolute bottom-0 right-0 z-10 flex h-2/4 w-3/4 flex-col items-center justify-center rounded-bl-[75px] rounded-tr-[75px] bg-main-color lg:w-9/12">
+                    class="absolute bottom-0 right-0 z-10 flex h-2/4 w-3/4 flex-col items-center justify-center rounded-bl-[75px] rounded-tr-[75px] bg-main-color lg:w-1/2">
                     <div class="flex flex-col">
                         <span class="text-2xl font-bold text-secondary-color">
                             Booking Starts at
@@ -433,12 +453,49 @@
                         molestiae consequatur. Est maxime et laboriosam
                         soluta accusantium consequatur vero sunt.
                     </p>
-                    <p>
-                        Enim a animi. Voluptate et quibusdam. Quis maxime
-                        animi. Hic quia quibusdam nostrum ea consectetur
-                        quo.
-                    </p>
-                    <a href="" class="button w-64">Book Now</a>
+                    <span class="inline-block h-[2px] w-1/2 bg-gray-200 dark:bg-gray-700"></span>
+                    <span class="font-medium text-green-500 flex items-center gap-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path
+                                d="M5.85 3.5a.75.75 0 00-1.117-1 9.719 9.719 0 00-2.348 4.876.75.75 0 001.479.248A8.219 8.219 0 015.85 3.5zM19.267 2.5a.75.75 0 10-1.118 1 8.22 8.22 0 011.987 4.124.75.75 0 001.48-.248A9.72 9.72 0 0019.266 2.5z" />
+                            <path fill-rule="evenodd"
+                                d="M12 2.25A6.75 6.75 0 005.25 9v.75a8.217 8.217 0 01-2.119 5.52.75.75 0 00.298 1.206c1.544.57 3.16.99 4.831 1.243a3.75 3.75 0 107.48 0 24.583 24.583 0 004.83-1.244.75.75 0 00.298-1.205 8.217 8.217 0 01-2.118-5.52V9A6.75 6.75 0 0012 2.25zM9.75 18c0-.034 0-.067.002-.1a25.05 25.05 0 004.496 0l.002.1a2.25 2.25 0 11-4.5 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                        <span>
+                            There are 14 house tour bookings this week
+                        </span>
+                    </span>
+                    <div class="flex -space-x-2">
+                        <img class="avatars"
+                            src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="">
+                        <img class="avatars"
+                            src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="">
+                        <img class="avatars"
+                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+                            alt="">
+                        <img class="avatars"
+                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="">
+                        <img class="avatars"
+                            src="https://images.unsplash.com/photo-1597983073453-ef06cfc2240e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="">
+                        <img class="avatars"
+                            src="https://images.unsplash.com/photo-1534330786040-317bdb76ccff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="">
+                        <img class="avatars"
+                            src="https://images.unsplash.com/photo-1645910154507-9318dda7e814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="">
+
+                        <a href="#"
+                            class="h-10 w-10 rounded-full ring-2 ring-white bg-gray-200 flex items-center justify-center text-sm font-bold dark:ring-gray-400">
+                            <span class="-ml-1 dark:text-main-color">+7</span>
+                        </a>
+                    </div>
+                    <a href="" class="button w-64 mt-2">Book Now</a>
                 </div>
             </div>
         </section>
@@ -479,17 +536,19 @@
             </div>
 
             <!-- Thumbnail Grids -->
-            <div class="order-1 col-span-5 self-center scale-95 md:order-2 lg:col-span-5 lg:col-start-7">
+            <div class="order-1 col-span-5 self-center scale-90 md:order-2 lg:col-span-5 lg:col-start-7">
                 <!-- Row 1 -->
                 <div class="grid w-full grid-cols-4 gap-4">
-                    <div class="col-span-2 h-auto overflow-hidden rounded-xl agent-grid-shadow" data-tilter>
+                    <div class="image-container col-span-2 h-auto overflow-hidden rounded-xl agent-grid-shadow"
+                        data-tilter>
                         <img src="/images/human1.jpg" alt="Avatar" />
                     </div>
                     <div class="flex h-auto flex-col justify-end">
-                        <div class="h-1/2 w-full rounded-xl bg-white agent-grid-shadow" data-tilter></div>
+                        <div class="h-1/2 w-full rounded-xl bg-white agent-grid-shadow relative z-10" data-tilter></div>
                     </div>
                     <div class="flex h-auto flex-col justify-end">
-                        <div class="h-1/2 w-full overflow-hidden rounded-xl bg-green-300 agent-grid-shadow" data-tilter>
+                        <div class="image-container h-1/2 w-full overflow-hidden rounded-xl bg-green-300 agent-grid-shadow"
+                            data-tilter>
                             <img src="/images/human2.jpg" alt="Avatar" class="h-full w-full object-cover" />
                         </div>
                     </div>
@@ -499,21 +558,24 @@
                 <!-- Row 2 -->
                 <div class="mt-4 grid w-full grid-cols-4 gap-4">
                     <div class="col-span-1 flex flex-col gap-4">
-                        <div class="h-1/2 w-full rounded-xl bg-[#0FFC19] agent-grid-shadow" data-tilter>
+                        <div class="h-1/2 w-full rounded-xl bg-[#0FFC19] agent-grid-shadow relative" data-tilter>
                         </div>
-                        <div class="h-auto w-full overflow-hidden rounded-xl agent-grid-shadow" data-tilter>
+                        <div class="image-container relative h-auto w-full overflow-hidden rounded-xl agent-grid-shadow"
+                            data-tilter>
                             <img src="/images/human3.jpg" alt="Avatar" />
                         </div>
                     </div>
-                    <div class="col-span-2 h-auto overflow-hidden rounded-xl agent-grid-shadow" data-tilter>
+                    <div class="image-container col-span-2 h-auto overflow-hidden rounded-xl agent-grid-shadow relative"
+                        data-tilter>
                         <img src="/images/human4.jpg" alt="Avatar" />
                     </div>
 
                     <div class="col-span-1 flex flex-col gap-4">
-                        <div class="h-auto w-full overflow-hidden rounded-xl agent-grid-shadow" data-tilter>
+                        <div class="image-container relative h-auto w-full overflow-hidden rounded-xl agent-grid-shadow"
+                            data-tilter>
                             <img src="/images/human5.jpg" alt="Avatar" />
                         </div>
-                        <div class="h-1/2 w-full rounded-xl bg-[#4FAFF5] agent-grid-shadow" data-tilter>
+                        <div class="h-1/2 w-full rounded-xl bg-[#4FAFF5] agent-grid-shadow relative" data-tilter>
                         </div>
                     </div>
                 </div>
@@ -522,9 +584,10 @@
                 <!-- Row 3 -->
                 <div class="mt-4 grid w-full grid-cols-4 gap-4">
                     <div class="col-start-2 flex flex-col">
-                        <div class="h-1/2 w-full rounded-xl bg-white agent-grid-shadow" data-tilter></div>
+                        <div class="h-1/2 w-full rounded-xl bg-white agent-grid-shadow relative" data-tilter></div>
                     </div>
-                    <div class="col-span-2 h-auto overflow-hidden rounded-xl agent-grid-shadow" data-tilter>
+                    <div class="image-container relative col-span-2 h-auto overflow-hidden rounded-xl agent-grid-shadow"
+                        data-tilter>
                         <img src="/images/human6.jpg" alt="Avatar" />
                     </div>
                 </div>
@@ -734,6 +797,9 @@
         </div>
     </section>
 
+    <!-- Mobile Menu -->
+    <script src="/scripts/mobile-menu.js"></script>
+
     <!-- Card Tilting Animation (Requires GSAP) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
     <script src="/scripts/card.js"></script>
@@ -744,6 +810,12 @@
 
     <!-- Stats Animation -->
     <script src="/scripts/stat-animation.js"></script>
+
+    <!-- Youtube Video -->
+    <script src="/scripts/youtube.js"></script>
+
+    <!-- Grid Avatar Animation -->
+    <script src="/scripts/grid-avatar-animation.js"></script>
 
     <!-- Google Map -->
     <!--
@@ -758,9 +830,6 @@
     -->
     <script src="https://maps.googleapis.com/maps/api/js?key="></script>
     <script src="/scripts/map.js"></script>
-
-    <!-- Youtube Video -->
-    <script src="/scripts/youtube.js"></script>
 </body>
 
 </html>
