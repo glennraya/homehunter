@@ -7,873 +7,1152 @@
  -->
 <!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HomeHunter - Your One-Stop-Shop Home Discovery Site</title>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HomeHunter - Your One-Stop-Shop Home Discovery Site</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;0,9..40,1000;1,9..40,800&display=swap"
+            rel="stylesheet" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;0,9..40,1000;1,9..40,800&display=swap"
-        rel="stylesheet" />
+        <link rel="stylesheet" href="/css/splide-core.min.css" />
+        <link rel="stylesheet" href="/src/main.css" />
 
-    <link rel="stylesheet" href="/css/splide-core.min.css" />
-    <link rel="stylesheet" href="/src/main.css" />
+        <!-- ViteJS entry point -->
+        <script type="module" src="/src/index.js"></script>
 
-    <!-- ViteJS entry point -->
-    <script type="module" src="/src/index.js"></script>
+        <!-- Determines the current theme of the page. -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                if (
+                    localStorage.theme === "dark" ||
+                    (!("theme" in localStorage) &&
+                        window.matchMedia("(prefers-color-scheme: dark)")
+                            .matches)
+                ) {
+                    document.documentElement.classList.add("dark");
+                    var element = document.getElementById("dark-btn");
+                    element.classList.add("hidden");
+                } else {
+                    document.documentElement.classList.remove("dark");
+                    var element = document.getElementById("light-btn");
+                    element.classList.add("hidden");
+                }
+            });
+        </script>
+    </head>
 
-    <!-- Determines the current theme of the page. -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia(
-                    '(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark')
-                var element = document.getElementById("dark-btn");
-                element.classList.add('hidden');
-            } else {
-                document.documentElement.classList.remove('dark')
-                var element = document.getElementById("light-btn");
-                element.classList.add('hidden');
-            }
-        });
-    </script>
-</head>
-
-<body class="relative h-screen font-sans text-main-color dark:bg-gray-900">
-    <!-- Free download banner, you can remove this once you're running it on your machine. -->
-    <div class="flex py-4 gap-x-3 bg-black text-secondary-color relative z-10">
-        <div class="flex w-full lg:w-1/2 mx-auto justify-center px-4">
-            <span class="text-center">
-                You can download this free template from the offical <a href="https://github.com/glennraya/homehunter"
-                    class="text-blue-500 border-b border-transparent hover:border-blue-500" target="_tab">Github
-                    repo</a> Cheers!
-                <span class="text-2xl">🥂</span>
-            </span>
-
-        </div>
-    </div>
-
-    <!-- Youtube Video Dialog -->
-    <div id="videoDialog" class="hidden z-40 bg-black/80 backdrop-blur-sm w-full h-full">
-        <iframe id="youtubeVideo"
-            class="w-3/4 aspect-video absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 lg:w-1/2"
-            src="https://www.youtube.com/embed/fgFjZEc1o3o" title="Touring a Polygonal House in Antipolo"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-        <button id="closeButton" type="button" class="mt-8 ml-8 transition duration-300 ease-in-out hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                class="w-12 h-12 text-white">
-                <path fill-rule="evenodd"
-                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
-                    clip-rule="evenodd" />
-            </svg>
-        </button>
-    </div>
-
-    <!-- Navigation -->
-    <div class="container">
-        <div class="relative z-30 flex items-center justify-between py-4">
-            <header class="self-center lg:self-end">
-                <a href="/" class="text-2xl font-extrabold tracking-tighter">
-                    <span class="text-secondary-color">Home</span>
-                    <span class="text-main-color dark:text-white">Hunter</span>
-                </a>
-            </header>
-            <!-- Desktop Menu -->
-            <div id="menu"
-                class="fixed hidden bg-gray-800 top-0 left-0 z-30 w-full h-screen flex-col gap-y-4 lg:bg-transparent lg:w-auto lg:h-auto lg:relative lg:flex lg:dark:bg-transparent">
-                <ul class="flex justify-center gap-x-8 text-gray-400 my-8 lg:my-0 lg:justify-end">
-                    <li class="flex items-center gap-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="#FFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-map-pin">
-                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                            <circle cx="12" cy="10" r="3" />
-                        </svg>
-                        <span>123 Coconut St. Manila, PH</span>
-                    </li>
-                    <li class="flex items-center gap-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="#FFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-smartphone">
-                            <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
-                            <path d="M12 18h.01" />
-                        </svg>
-                        <span>+63 0909 123 4567</span>
-                    </li>
-                </ul>
-                <div class="flex flex-col gap-x-6 gap-y-6 lg:flex-row">
-                    <nav
-                        class="flex flex-col items-center justify-end gap-x-6 gap-y-3 text-4xl font-medium text-white lg:text-xl lg:flex-row dark:text-white">
-                        <a href="/" class="current-page" title="Home Page">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-12 h-12 lg:w-8 lg:h-8 text-secondary-color">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                            </svg>
-                            <span class="sr-only">Home Page</span>
-                        </a>
-                        <a href="#" class="nav-link" title="Available Properties">Properties</a>
-                        <a href="#" class="nav-link" title="Services Offered">Services</a>
-                        <a href="#" class="nav-link" title="About Us">About</a>
-                        <a href="#"
-                            class="rounded-full border-2 border-white px-5 py-3 transition duration-300 ease-in-out lg:border hover:bg-white hover:text-main-color dark:border-white dark:hover:bg-white dark:hover:text-main-color"
-                            title="Sign In to Dashboard">
-                            Sign In
-                        </a>
-
-                        <!-- Mobile Menu Close Btn -->
-                        <button id="menu-close" class="lg:hidden transition duration-300 ease-in-out hover:scale-110"
-                            title="Close menu">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
-                                stroke="currentColor" class="w-16 h-16">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </button>
-                    </nav>
-
-                    <!-- Theme Buttons -->
-                    <button id="dark-btn" class="self-center text-white dark:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="w-16 h-16 lg:w-6 lg:h-6">
-                            <path
-                                d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
-                        </svg>
-                    </button>
-                    <button id="light-btn" class="self-center text-white dark:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="w-16 h-16 lg:w-6 lg:h-6">
-                            <path fill-rule="evenodd"
-                                d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                </div>
+    <body class="relative h-screen font-sans text-main-color dark:bg-gray-900">
+        <!-- Free download banner, you can remove this once you're running it on your machine. -->
+        <div
+            class="relative z-10 flex gap-x-3 bg-black py-4 text-secondary-color">
+            <div class="mx-auto flex w-full justify-center px-4 lg:w-1/2">
+                <span class="text-center">
+                    You can download this free template from the offical
+                    <a
+                        href="https://github.com/glennraya/homehunter"
+                        class="border-b border-transparent text-blue-500 hover:border-blue-500"
+                        target="_tab">
+                        Github repo
+                    </a>
+                    Cheers!
+                    <span class="text-2xl">🥂</span>
+                </span>
             </div>
+        </div>
 
-            <!-- Mobile Menu Button -->
-            <button id="menu-open" class="lg:hidden" title="Open Menu">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                    class="w-12 h-12 text-black dark:text-white">
-                    <path fill-rule="evenodd"
-                        d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+        <!-- Youtube Video Dialog -->
+        <div
+            id="videoDialog"
+            class="z-40 hidden h-full w-full bg-black/80 backdrop-blur-sm">
+            <iframe
+                id="youtubeVideo"
+                class="absolute left-1/2 top-1/2 aspect-video w-3/4 -translate-x-1/2 -translate-y-1/2 transform lg:w-1/2"
+                src="https://www.youtube.com/embed/fgFjZEc1o3o"
+                title="Touring a Polygonal House in Antipolo"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            <button
+                id="closeButton"
+                type="button"
+                class="ml-8 mt-8 transition duration-300 ease-in-out hover:scale-110">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="h-12 w-12 text-white">
+                    <path
+                        fill-rule="evenodd"
+                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
                         clip-rule="evenodd" />
                 </svg>
             </button>
-
-
-        </div>
-    </div>
-
-    <!-- Hero Section -->
-    <div class="container flex flex-col lg:h-[60%] lg:flex-row">
-        <!-- <section> -->
-        <div class="order-2 my-8 flex flex-col gap-y-4 lg:my-0 lg:self-center">
-            <h1 class="text-5xl font-black text-center lg:text-left lg:text-5xl xl:text-6xl">
-                <span class="text-main-color dark:text-white">Your Dream Home.</span>
-                <br />
-                <span class="text-secondary-color">One Step Closer.</span>
-            </h1>
-            <p class="text-lg text-center lg:text-left dark:text-white">
-                Your dream home awaits &mdash; let's unlock
-                <br />
-                the door to your future together!
-            </p>
-
-            <div class="flex gap-x-4">
-                <a href=""
-                    class="flex-1 rounded-full border border-main-color py-4 text-center text-main-color transition duration-300 ease-in-out hover:scale-110 hover:bg-main-color hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black">
-                    About Us
-                </a>
-                <a href="" class="button flex-1">Search Properties</a>
-            </div>
         </div>
 
-        <!-- Images -->
-        <div
-            class="mx-auto after:contents-[''] relative order-1 mt-8 h-64 w-64 font-black before:invisible after:invisible after:absolute after:left-0 after:top-0 after:hidden after:h-full after:w-full after:bg-gradient-to-b after:from-gray-900 lg:mx-0 lg:absolute lg:right-0 lg:top-0 lg:z-0 lg:mt-0 lg:w-1/2 lg:before:visible lg:after:visible lg:after:block lg:h-[540px] lg:shadow-main-color/30 lg:shadow-xl">
+        <!-- Navigation -->
+        <div class="container">
+            <div class="relative z-30 flex items-center justify-between py-4">
+                <header class="self-center lg:self-end">
+                    <a
+                        href="/"
+                        class="text-2xl font-extrabold tracking-tighter">
+                        <span class="text-secondary-color">Home</span>
+                        <span class="text-main-color dark:text-white">
+                            Hunter
+                        </span>
+                    </a>
+                </header>
+                <!-- Desktop Menu -->
+                <div
+                    id="menu"
+                    class="fixed left-0 top-0 z-30 hidden h-screen w-full flex-col gap-y-4 bg-gray-800 lg:relative lg:flex lg:h-auto lg:w-auto lg:bg-transparent lg:dark:bg-transparent">
+                    <ul
+                        class="my-8 flex justify-center gap-x-8 text-gray-400 lg:my-0 lg:justify-end">
+                        <li class="flex items-center gap-x-2">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#FFF"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-map-pin">
+                                <path
+                                    d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            <span>123 Coconut St. Manila, PH</span>
+                        </li>
+                        <li class="flex items-center gap-x-2">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#FFF"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-smartphone">
+                                <rect
+                                    width="14"
+                                    height="20"
+                                    x="5"
+                                    y="2"
+                                    rx="2"
+                                    ry="2" />
+                                <path d="M12 18h.01" />
+                            </svg>
+                            <span>+63 0909 123 4567</span>
+                        </li>
+                    </ul>
+                    <div class="flex flex-col gap-x-6 gap-y-6 lg:flex-row">
+                        <nav
+                            class="flex flex-col items-center justify-end gap-x-6 gap-y-3 text-4xl font-medium text-white dark:text-white lg:flex-row lg:text-xl">
+                            <a href="/" class="current-page" title="Home Page">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="h-12 w-12 text-secondary-color lg:h-8 lg:w-8">
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                </svg>
+                                <span class="sr-only">Home Page</span>
+                            </a>
+                            <a
+                                href="#"
+                                class="nav-link"
+                                title="Available Properties">
+                                Properties
+                            </a>
+                            <a
+                                href="#"
+                                class="nav-link"
+                                title="Services Offered">
+                                Services
+                            </a>
+                            <a href="#" class="nav-link" title="About Us">
+                                About
+                            </a>
+                            <a
+                                href="#"
+                                class="rounded-full border-2 border-white px-5 py-3 transition duration-300 ease-in-out hover:bg-white hover:text-main-color dark:border-white dark:hover:bg-white dark:hover:text-main-color lg:border"
+                                title="Sign In to Dashboard">
+                                Sign In
+                            </a>
 
-            <img src="/images/home1.jpg" alt="Home Image" class="hidden h-full w-full object-cover lg:block" />
-            <span
-                class="inline-block absolute h-64 w-64 overflow-hidden rounded-[45px] shadow-xl lg:z-20 xl:h-72 xl:w-72 xl:-top-52 xl:-left-24 lg:-top-48 lg:-left-12 lg:rounded-[75px] lg:relative"
-                data-tilter>
-                <a href="#" id="videoTrigger" class="inline-block w-full h-full absolute">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                        class="w-32 h-32 absolute text-white drop-shadow-md shadow-black transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
-                        <path fill-rule="evenodd"
-                            d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                            <!-- Mobile Menu Close Btn -->
+                            <button
+                                id="menu-close"
+                                class="transition duration-300 ease-in-out hover:scale-110 lg:hidden"
+                                title="Close menu">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1"
+                                    stroke="currentColor"
+                                    class="h-16 w-16">
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </button>
+                        </nav>
+
+                        <!-- Theme Buttons -->
+                        <button
+                            id="dark-btn"
+                            class="self-center text-white dark:text-white">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                class="h-16 w-16 lg:h-6 lg:w-6">
+                                <path
+                                    d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+                            </svg>
+                        </button>
+                        <button
+                            id="light-btn"
+                            class="self-center text-white dark:text-white">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                class="h-16 w-16 lg:h-6 lg:w-6">
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-open" class="lg:hidden" title="Open Menu">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="h-12 w-12 text-black dark:text-white">
+                        <path
+                            fill-rule="evenodd"
+                            d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
                             clip-rule="evenodd" />
                     </svg>
-                </a>
-
-                <img src="/images/home2.jpg" alt="Home Image" />
-            </span>
+                </button>
+            </div>
         </div>
-        <!-- </section> -->
-    </div>
 
-    <!-- New Home Entries Section -->
-    <div
-        class="wrapper before:contents-[''] after:contents-[''] relative pb-20 pt-8 before:absolute before:left-0 before:top-0 before:hidden before:h-1/2 before:w-4 before:bg-main-color after:absolute after:bottom-0 after:left-0 after:hidden after:h-1/2 after:w-4 after:bg-secondary-color lg:pt-14 lg:before:block lg:after:block">
-        <section class="container relative flex flex-col lg:flex-row">
-            <div class="relative mb-8 flex flex-col lg:z-20">
-                <header class="mt-12 lg:-mr-32">
-                    <h2 class="mb-8 flex w-96 flex-col">
-                        <span class="text-sm font-black uppercase text-secondary-color">
-                            Properties
-                        </span>
-                        <span class="text-5xl font-black text-main-color dark:text-white">
-                            Our New
-                            <span class="text-secondary-color">Home</span>
-                            <br />
-                            Entries
-                        </span>
-                    </h2>
-                </header>
-                <a href="" class="button w-52">Browse Properties</a>
+        <!-- Hero Section -->
+        <div class="container flex flex-col lg:h-[60%] lg:flex-row">
+            <!-- <section> -->
+            <div
+                class="order-2 my-8 flex flex-col gap-y-4 lg:my-0 lg:self-center">
+                <h1
+                    class="text-center text-5xl font-black lg:text-left lg:text-5xl xl:text-6xl">
+                    <span class="text-main-color dark:text-white">
+                        Your Dream Home.
+                    </span>
+                    <br />
+                    <span class="text-secondary-color">One Step Closer.</span>
+                </h1>
+                <p class="text-center text-lg dark:text-white lg:text-left">
+                    Your dream home awaits &mdash; let's unlock
+                    <br />
+                    the door to your future together!
+                </p>
+
+                <div class="flex gap-x-4">
+                    <a
+                        href=""
+                        class="flex-1 rounded-full border border-main-color py-4 text-center text-main-color transition duration-300 ease-in-out hover:scale-110 hover:bg-main-color hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black">
+                        About Us
+                    </a>
+                    <a href="" class="button flex-1">Search Properties</a>
+                </div>
             </div>
 
+            <!-- Images -->
             <div
-                class="relative z-10 flex w-full flex-col rounded-[75px] bg-accent-color px-8 py-0 lg:w-4/5 dark:bg-gray-800">
-                <blockquote class="relative mx-auto w-3/4 pb-4 pt-20 text-center text-lg text-main-color lg:px-8">
-                    <img src="/images/quote.svg" alt="Quote"
-                        class="absolute left-0 top-8 z-0 w-20 opacity-60 lg:w-48" />
-                    <span class="relative z-10 dark:text-white">
-                        Home is the nicest word there is. It is a word that
-                        means so much to every one of us, the place where,
-                        when you go there, they have to take you in, where
-                        you go to be accepted, loved, and protected, no
-                        matter what you do or what happens outside that
-                        door.
-                    </span>
-                    <footer class="italic text-secondary-color">
-                        Laura Ingalls Wilder
-                    </footer>
-                </blockquote>
+                class="after:contents-[''] relative order-1 mx-auto mt-8 h-64 w-64 font-black before:invisible after:invisible after:absolute after:left-0 after:top-0 after:hidden after:h-full after:w-full after:bg-gradient-to-b after:from-gray-900 lg:absolute lg:right-0 lg:top-0 lg:z-0 lg:mx-0 lg:mt-0 lg:h-[540px] lg:w-1/2 lg:shadow-xl lg:shadow-main-color/30 lg:before:visible lg:after:visible lg:after:block">
+                <img
+                    src="/images/home1.jpg"
+                    alt="Home Image"
+                    class="hidden h-full w-full object-cover lg:block" />
+                <span
+                    class="absolute inline-block h-64 w-64 overflow-hidden rounded-[45px] shadow-xl lg:relative lg:-left-12 lg:-top-48 lg:z-20 lg:rounded-[75px] xl:-left-24 xl:-top-52 xl:h-72 xl:w-72"
+                    data-tilter>
+                    <a
+                        href="#"
+                        id="videoTrigger"
+                        class="absolute inline-block h-full w-full">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            class="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 transform text-white shadow-black drop-shadow-md">
+                            <path
+                                fill-rule="evenodd"
+                                d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
 
-                <!-- Carousel -->
-                <section class="splide" aria-labelledby="carousel-heading" role="carousel">
-                    <div class="splide__track px-20 pb-4 pt-12">
-                        <div class="splide__list">
-                            <!-- Item 1 -->
-                            <div class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
-                                data-tilter>
+                    <img src="/images/home2.jpg" alt="Home Image" />
+                </span>
+            </div>
+            <!-- </section> -->
+        </div>
+
+        <!-- New Home Entries Section -->
+        <div
+            class="wrapper before:contents-[''] after:contents-[''] relative pb-20 pt-8 before:absolute before:left-0 before:top-0 before:hidden before:h-1/2 before:w-4 before:bg-main-color after:absolute after:bottom-0 after:left-0 after:hidden after:h-1/2 after:w-4 after:bg-secondary-color lg:pt-14 lg:before:block lg:after:block">
+            <section class="container relative flex flex-col lg:flex-row">
+                <div class="relative mb-8 flex flex-col lg:z-20">
+                    <header class="mt-12 lg:-mr-32">
+                        <h2 class="mb-8 flex w-96 flex-col">
+                            <span
+                                class="text-sm font-black uppercase text-secondary-color">
+                                Properties
+                            </span>
+                            <span
+                                class="text-5xl font-black text-main-color dark:text-white">
+                                Our New
+                                <span class="text-secondary-color">Home</span>
+                                <br />
+                                Entries
+                            </span>
+                        </h2>
+                    </header>
+                    <a href="" class="button w-52">Browse Properties</a>
+                </div>
+
+                <div
+                    class="relative z-10 flex w-full flex-col rounded-[75px] bg-accent-color px-8 py-0 dark:bg-gray-800 lg:w-4/5">
+                    <blockquote
+                        class="relative mx-auto w-3/4 pb-4 pt-20 text-center text-lg text-main-color lg:px-8">
+                        <img
+                            src="/images/quote.svg"
+                            alt="Quote"
+                            class="absolute left-0 top-8 z-0 w-20 opacity-60 lg:w-48" />
+                        <span class="relative z-10 dark:text-white">
+                            Home is the nicest word there is. It is a word that
+                            means so much to every one of us, the place where,
+                            when you go there, they have to take you in, where
+                            you go to be accepted, loved, and protected, no
+                            matter what you do or what happens outside that
+                            door.
+                        </span>
+                        <footer class="italic text-secondary-color">
+                            Laura Ingalls Wilder
+                        </footer>
+                    </blockquote>
+
+                    <!-- Carousel -->
+                    <section
+                        class="splide"
+                        aria-labelledby="carousel-heading"
+                        role="carousel">
+                        <div class="splide__track px-20 pb-4 pt-12">
+                            <div class="splide__list">
+                                <!-- Item 1 -->
                                 <div
-                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
-                                    <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
-                                        This is the content of the hovered
-                                        house thumbnail.
+                                    class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
+                                    data-tilter>
+                                    <div
+                                        class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
+                                        <p
+                                            class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
+                                            This is the content of the hovered
+                                            house thumbnail.
 
-                                        <span class="flex flex-col font-bold text-secondary-color">
-                                            <span class="font-normal text-white">
-                                                From
+                                            <span
+                                                class="flex flex-col font-bold text-secondary-color">
+                                                <span
+                                                    class="font-normal text-white">
+                                                    From
+                                                </span>
+                                                <span class="text-xl">
+                                                    $45,000
+                                                </span>
                                             </span>
-                                            <span class="text-xl">
-                                                $45,000
+                                        </p>
+                                        <a
+                                            href=""
+                                            class="flex items-center justify-center self-end rounded-full bg-white p-4 transition duration-300 ease-in-out hover:scale-110"
+                                            title="Go to property">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke-width="1.5"
+                                                stroke="currentColor"
+                                                class="h-6 w-6 text-black">
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                            </svg>
+                                            <span class="sr-only">
+                                                Go to property
                                             </span>
-                                        </span>
-                                    </p>
-                                    <a href=""
-                                        class="flex items-center justify-center self-end rounded-full bg-white p-4 transition duration-300 ease-in-out hover:scale-110"
-                                        title="Go to property">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-black">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                        </svg>
-                                        <span class="sr-only">
-                                            Go to property
-                                        </span>
-                                    </a>
+                                        </a>
+                                    </div>
+                                    <img
+                                        src="/images/house.jpg"
+                                        alt="House image"
+                                        class="h-full w-full object-cover" />
                                 </div>
-                                <img src="/images/house.jpg" alt="House image" class="h-full w-full object-cover" />
-                            </div>
 
-                            <!-- Item 2 -->
-                            <div class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
-                                data-tilter>
+                                <!-- Item 2 -->
                                 <div
-                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
-                                    <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
-                                        This is the content of the hovered
-                                        house thumbnail.
+                                    class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
+                                    data-tilter>
+                                    <div
+                                        class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
+                                        <p
+                                            class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
+                                            This is the content of the hovered
+                                            house thumbnail.
 
-                                        <span class="flex flex-col font-bold text-secondary-color">
-                                            <span class="font-normal text-white">
-                                                From
+                                            <span
+                                                class="flex flex-col font-bold text-secondary-color">
+                                                <span
+                                                    class="font-normal text-white">
+                                                    From
+                                                </span>
+                                                <span class="text-xl">
+                                                    $1,200,000
+                                                </span>
                                             </span>
-                                            <span class="text-xl">
-                                                $1,200,000
+                                        </p>
+                                        <a
+                                            href=""
+                                            class="flex items-center justify-center self-end rounded-full bg-white p-4 transition duration-300 ease-in-out hover:scale-110"
+                                            title="Go to property">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke-width="1.5"
+                                                stroke="currentColor"
+                                                class="h-6 w-6 text-black">
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                            </svg>
+                                            <span class="sr-only">
+                                                Go to property
                                             </span>
-                                        </span>
-                                    </p>
-                                    <a href=""
-                                        class="flex items-center justify-center self-end rounded-full bg-white p-4 transition duration-300 ease-in-out hover:scale-110"
-                                        title="Go to property">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-black">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                        </svg>
-                                        <span class="sr-only">
-                                            Go to property
-                                        </span>
-                                    </a>
+                                        </a>
+                                    </div>
+                                    <img
+                                        src="/images/house2.jpg"
+                                        alt="House image"
+                                        class="h-full w-full object-cover" />
                                 </div>
-                                <img src="/images/house2.jpg" alt="House image" class="h-full w-full object-cover" />
-                            </div>
 
-                            <!-- Item 3 -->
-                            <div class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
-                                data-tilter>
+                                <!-- Item 3 -->
                                 <div
-                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
-                                    <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
-                                        This is the content of the hovered
-                                        house thumbnail.
+                                    class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
+                                    data-tilter>
+                                    <div
+                                        class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
+                                        <p
+                                            class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
+                                            This is the content of the hovered
+                                            house thumbnail.
 
-                                        <span class="flex flex-col font-bold text-secondary-color">
-                                            <span class="font-normal text-white">
-                                                From
+                                            <span
+                                                class="flex flex-col font-bold text-secondary-color">
+                                                <span
+                                                    class="font-normal text-white">
+                                                    From
+                                                </span>
+                                                <span class="text-xl">
+                                                    $98,000
+                                                </span>
                                             </span>
-                                            <span class="text-xl">
-                                                $98,000
+                                        </p>
+                                        <a
+                                            href=""
+                                            class="flex items-center justify-center self-end rounded-full bg-white p-4 transition duration-300 ease-in-out hover:scale-110"
+                                            title="Go to property">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke-width="1.5"
+                                                stroke="currentColor"
+                                                class="h-6 w-6 text-black">
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                            </svg>
+                                            <span class="sr-only">
+                                                Go to property
                                             </span>
-                                        </span>
-                                    </p>
-                                    <a href=""
-                                        class="flex items-center justify-center self-end rounded-full bg-white p-4 transition duration-300 ease-in-out hover:scale-110"
-                                        title="Go to property">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-black">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                        </svg>
-                                        <span class="sr-only">
-                                            Go to property
-                                        </span>
-                                    </a>
+                                        </a>
+                                    </div>
+                                    <img
+                                        src="/images/house3.jpg"
+                                        alt="House image"
+                                        class="h-full w-full object-cover" />
                                 </div>
-                                <img src="/images/house3.jpg" alt="House image" class="h-full w-full object-cover" />
-                            </div>
 
-                            <!-- Item 4 -->
-                            <div class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
-                                data-tilter>
+                                <!-- Item 4 -->
                                 <div
-                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
-                                    <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
-                                        This is the content of the hovered
-                                        house thumbnail.
+                                    class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
+                                    data-tilter>
+                                    <div
+                                        class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
+                                        <p
+                                            class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
+                                            This is the content of the hovered
+                                            house thumbnail.
 
-                                        <span class="flex flex-col font-bold text-secondary-color">
-                                            <span class="font-normal text-white">
-                                                From
+                                            <span
+                                                class="flex flex-col font-bold text-secondary-color">
+                                                <span
+                                                    class="font-normal text-white">
+                                                    From
+                                                </span>
+                                                <span class="text-xl">
+                                                    $88,000
+                                                </span>
                                             </span>
-                                            <span class="text-xl">
-                                                $88,000
+                                        </p>
+                                        <a
+                                            href=""
+                                            class="flex items-center justify-center self-end rounded-full bg-white p-4 transition duration-300 ease-in-out hover:scale-110"
+                                            title="Go to property">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke-width="1.5"
+                                                stroke="currentColor"
+                                                class="h-6 w-6 text-black">
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                            </svg>
+                                            <span class="sr-only">
+                                                Go to property
                                             </span>
-                                        </span>
-                                    </p>
-                                    <a href=""
-                                        class="flex items-center justify-center self-end rounded-full bg-white p-4 transition duration-300 ease-in-out hover:scale-110"
-                                        title="Go to property">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-black">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                        </svg>
-                                        <span class="sr-only">
-                                            Go to property
-                                        </span>
-                                    </a>
+                                        </a>
+                                    </div>
+                                    <img
+                                        src="/images/house4.jpg"
+                                        alt="House image"
+                                        class="h-full w-full object-cover" />
                                 </div>
-                                <img src="/images/house4.jpg" alt="House image" class="h-full w-full object-cover" />
-                            </div>
 
-                            <!-- Item 5 -->
-                            <div class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
-                                data-tilter>
+                                <!-- Item 5 -->
                                 <div
-                                    class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
-                                    <p class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
-                                        This is the content of the hovered
-                                        house thumbnail.
+                                    class="splide__slide group relative flex h-[440px] items-center justify-center overflow-hidden rounded-[75px] shadow-md"
+                                    data-tilter>
+                                    <div
+                                        class="absolute left-0 top-0 hidden h-full w-full flex-col items-center justify-center bg-gradient-to-t from-black p-8 backdrop-blur-sm group-hover:flex">
+                                        <p
+                                            class="mb-16 mt-auto flex flex-col gap-y-4 self-center text-lg text-white">
+                                            This is the content of the hovered
+                                            house thumbnail.
 
-                                        <span class="flex flex-col font-bold text-secondary-color">
-                                            <span class="font-normal text-white">
-                                                From
+                                            <span
+                                                class="flex flex-col font-bold text-secondary-color">
+                                                <span
+                                                    class="font-normal text-white">
+                                                    From
+                                                </span>
+                                                <span class="text-xl">
+                                                    $128,000
+                                                </span>
                                             </span>
-                                            <span class="text-xl">
-                                                $128,000
+                                        </p>
+                                        <a
+                                            href=""
+                                            class="flex items-center justify-center self-end rounded-full bg-white p-4 transition duration-300 ease-in-out hover:scale-110"
+                                            title="Go to property">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke-width="1.5"
+                                                stroke="currentColor"
+                                                class="h-6 w-6 text-black">
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                            </svg>
+                                            <span class="sr-only">
+                                                Go to property
                                             </span>
-                                        </span>
-                                    </p>
-                                    <a href=""
-                                        class="flex items-center justify-center self-end rounded-full bg-white p-4 transition duration-300 ease-in-out hover:scale-110"
-                                        title="Go to property">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-black">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                        </svg>
-                                        <span class="sr-only">
-                                            Go to property
-                                        </span>
-                                    </a>
+                                        </a>
+                                    </div>
+                                    <img
+                                        src="/images/house5.jpg"
+                                        alt="House image"
+                                        class="h-full w-full object-cover" />
                                 </div>
-                                <img src="/images/house5.jpg" alt="House image" class="h-full w-full object-cover" />
                             </div>
                         </div>
-                    </div>
-                    <!--
+                        <!--
                         Carousel Navigation Buttons
                         NOTE: If you want to hide the carousel arrows, change the 'arrows' option in the settings below to 'false'
                     -->
-                    <div class="splide__arrows flex justify-center gap-x-4 py-4">
-                        <button class="splide__arrow splide__arrow--prev">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6 text-main-color dark:text-secondary-color">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                            </svg>
+                        <div
+                            class="splide__arrows flex justify-center gap-x-4 py-4">
+                            <button class="splide__arrow splide__arrow--prev">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="h-6 w-6 text-main-color dark:text-secondary-color">
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                                </svg>
+                            </button>
+                            <button class="splide__arrow splide__arrow--next">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="h-6 w-6 text-main-color dark:text-secondary-color">
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                </svg>
+                            </button>
+                        </div>
+                        <!-- End: Carousel Navigation -->
+                    </section>
+                    <!-- End: Carousel -->
+                </div>
+            </section>
+        </div>
 
-
-                        </button>
-                        <button class="splide__arrow splide__arrow--next">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6 text-main-color dark:text-secondary-color">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- End: Carousel Navigation -->
-                </section>
-                <!-- End: Carousel -->
-            </div>
-        </section>
-    </div>
-
-    <!-- Booking Section -->
-    <div
-        class="before:contents-[''] after:contents-[''] relative py-20 before:absolute before:right-0 before:top-0 before:hidden before:h-1/2 before:w-24 before:bg-main-color after:absolute after:right-16 after:top-16 after:hidden after:h-24 after:w-24 after:bg-secondary-color lg:before:top-1/2 lg:before:block lg:before:w-8 lg:before:-translate-x-1/2 lg:before:-translate-y-1/2 lg:before:transform lg:after:right-4 lg:after:top-1/2 lg:after:block lg:after:w-8 lg:after:-translate-x-1/2 lg:after:-translate-y-1/2 lg:after:transform">
-        <section class="container gap-x-16 md:grid md:grid-cols-2 lg:grid-cols-12">
-            <div class="relative flex h-[480px] w-full flex-col lg:col-span-5" data-tilter>
-                <img src="/images/house6.jpg" alt="House 6"
-                    class="h-[480px] w-full rounded-bl-[75px] rounded-tr-[75px] object-cover" />
+        <!-- Booking Section -->
+        <div
+            class="before:contents-[''] after:contents-[''] relative py-20 before:absolute before:right-0 before:top-0 before:hidden before:h-1/2 before:w-24 before:bg-main-color after:absolute after:right-16 after:top-16 after:hidden after:h-24 after:w-24 after:bg-secondary-color lg:before:top-1/2 lg:before:block lg:before:w-8 lg:before:-translate-x-1/2 lg:before:-translate-y-1/2 lg:before:transform lg:after:right-4 lg:after:top-1/2 lg:after:block lg:after:w-8 lg:after:-translate-x-1/2 lg:after:-translate-y-1/2 lg:after:transform">
+            <section
+                class="container gap-x-16 md:grid md:grid-cols-2 lg:grid-cols-12">
                 <div
-                    class="absolute bottom-0 right-0 z-10 flex h-2/4 w-3/4 flex-col items-center justify-center rounded-bl-[75px] rounded-tr-[75px] bg-main-color lg:w-1/2">
-                    <div class="flex flex-col">
-                        <span class="text-2xl font-bold text-secondary-color">
-                            Booking Starts at
-                        </span>
-                        <span class="text-right text-5xl font-bold text-white">
-                            $100
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex flex-col lg:col-span-7">
-                <header class="mt-12">
-                    <h2 class="relative z-20 mb-8 flex flex-col">
-                        <span class="text-sm font-black uppercase text-secondary-color">
-                            Booking
-                        </span>
-                        <span class="text-5xl font-black text-main-color dark:text-white">
-                            Book Your
-                            <span class="text-secondary-color">
-                                House Tour
+                    class="relative flex h-[480px] w-full flex-col lg:col-span-5"
+                    data-tilter>
+                    <img
+                        src="/images/house6.jpg"
+                        alt="House 6"
+                        class="h-[480px] w-full rounded-bl-[75px] rounded-tr-[75px] object-cover" />
+                    <div
+                        class="absolute bottom-0 right-0 z-10 flex h-2/4 w-3/4 flex-col items-center justify-center rounded-bl-[75px] rounded-tr-[75px] bg-main-color lg:w-1/2">
+                        <div class="flex flex-col">
+                            <span
+                                class="text-2xl font-bold text-secondary-color">
+                                Booking Starts at
                             </span>
-                            <br class="hidden lg:block" />
-                            Appointment
-                        </span>
-                    </h2>
-                </header>
-                <div class="mb-4 flex w-full flex-col gap-y-4 text-lg text-main-color lg:w-9/12 dark:text-white">
-                    <p>
-                        Numquam et tenetur consequuntur dignissimos quia
-                        maxime fugit. Tempora enim recusandae tenetur
-                        molestiae consequatur. Est maxime et laboriosam
-                        soluta accusantium consequatur vero sunt.
-                    </p>
-                    <span class="inline-block h-[2px] w-1/2 bg-gray-200 dark:bg-gray-700"></span>
-                    <span class="font-medium text-green-500 flex items-center gap-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                            <path
-                                d="M5.85 3.5a.75.75 0 00-1.117-1 9.719 9.719 0 00-2.348 4.876.75.75 0 001.479.248A8.219 8.219 0 015.85 3.5zM19.267 2.5a.75.75 0 10-1.118 1 8.22 8.22 0 011.987 4.124.75.75 0 001.48-.248A9.72 9.72 0 0019.266 2.5z" />
-                            <path fill-rule="evenodd"
-                                d="M12 2.25A6.75 6.75 0 005.25 9v.75a8.217 8.217 0 01-2.119 5.52.75.75 0 00.298 1.206c1.544.57 3.16.99 4.831 1.243a3.75 3.75 0 107.48 0 24.583 24.583 0 004.83-1.244.75.75 0 00.298-1.205 8.217 8.217 0 01-2.118-5.52V9A6.75 6.75 0 0012 2.25zM9.75 18c0-.034 0-.067.002-.1a25.05 25.05 0 004.496 0l.002.1a2.25 2.25 0 11-4.5 0z"
-                                clip-rule="evenodd" />
-                        </svg>
-
-                        <span>
-                            There are 14 house tour bookings this week
-                        </span>
-                    </span>
-                    <div class="flex -space-x-2">
-                        <img class="avatars"
-                            src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="">
-                        <img class="avatars"
-                            src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="">
-                        <img class="avatars"
-                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
-                            alt="">
-                        <img class="avatars"
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="">
-                        <img class="avatars"
-                            src="https://images.unsplash.com/photo-1597983073453-ef06cfc2240e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="">
-                        <img class="avatars"
-                            src="https://images.unsplash.com/photo-1534330786040-317bdb76ccff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="">
-                        <img class="avatars"
-                            src="https://images.unsplash.com/photo-1645910154507-9318dda7e814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="">
-
-                        <a href="#"
-                            class="h-10 w-10 rounded-full ring-2 ring-white bg-gray-200 flex items-center justify-center text-sm font-bold dark:ring-gray-400">
-                            <span class="-ml-1 dark:text-main-color">+7</span>
-                        </a>
-                    </div>
-                    <a href="" class="button w-64 mt-2">Book Now</a>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Real-Estate Agents Section -->
-    <div class="wrapper mb:16 relative mt-16 py-20 lg:mb-32 lg:mt-60">
-        <div
-            class="before:contents-[''] after:contents-[''] absolute left-0 top-0 z-0 h-full w-full skew-y-[3deg] bg-accent-color before:absolute before:left-0 before:top-0 before:z-10 before:block before:h-12 before:w-1/2 before:bg-main-color after:absolute after:bottom-0 after:right-0 after:z-10 after:block after:h-12 after:w-1/2 after:bg-secondary-color dark:bg-gray-800">
-        </div>
-
-        <section class="container relative z-10 grid grid-cols-1 md:grid-cols-12 md:gap-5">
-            <div class="order-2 col-span-7 self-center pb-24 md:order-1 lg:col-span-6">
-                <header class="mt-12">
-                    <h2 class="relative z-20 mb-8 flex flex-col">
-                        <span class="text-sm font-black uppercase text-secondary-color">
-                            Meet Our Expert Agents
-                        </span>
-                        <span class="text-5xl font-black text-main-color dark:text-white">
-                            Our Team of
-                            <span class="text-secondary-color">
-                                Professional
+                            <span
+                                class="text-right text-5xl font-bold text-white">
+                                $100
                             </span>
-                            <br />
-                            Real Estate Agents
-                        </span>
-                    </h2>
-                </header>
-                <div class="mb-4 flex w-full flex-col gap-y-4 lg:w-9/12">
-                    <p class="text-main-color text-lg dark:text-white">
-                        Numquam et tenetur consequuntur dignissimos quia
-                        maxime fugit. Tempora enim recusandae tenetur
-                        molestiae consequatur. Est maxime et laboriosam
-                        soluta accusantium consequatur vero sunt.
-                    </p>
-                    <a href="" class="button w-64">Meet Our Agents</a>
-                </div>
-            </div>
-
-            <!-- Thumbnail Grids -->
-            <div class="order-1 col-span-5 self-center scale-90 md:order-2 lg:col-span-5 lg:col-start-7">
-                <!-- Row 1 -->
-                <div class="grid w-full grid-cols-4 gap-4">
-                    <div class="image-container col-span-2 h-auto overflow-hidden rounded-xl agent-grid-shadow"
-                        data-tilter>
-                        <img src="/images/human1.jpg" alt="Avatar" />
-                    </div>
-                    <div class="flex h-auto flex-col justify-end">
-                        <div class="h-1/2 w-full rounded-xl bg-white agent-grid-shadow relative z-10" data-tilter></div>
-                    </div>
-                    <div class="flex h-auto flex-col justify-end">
-                        <div class="image-container h-1/2 w-full overflow-hidden rounded-xl bg-green-300 agent-grid-shadow"
-                            data-tilter>
-                            <img src="/images/human2.jpg" alt="Avatar" class="h-full w-full object-cover" />
                         </div>
                     </div>
                 </div>
-                <!-- End: Row 1 -->
 
-                <!-- Row 2 -->
-                <div class="mt-4 grid w-full grid-cols-4 gap-4">
-                    <div class="col-span-1 flex flex-col gap-4">
-                        <div class="h-1/2 w-full rounded-xl bg-[#0FFC19] agent-grid-shadow relative" data-tilter>
-                        </div>
-                        <div class="image-container relative h-auto w-full overflow-hidden rounded-xl agent-grid-shadow"
-                            data-tilter>
-                            <img src="/images/human3.jpg" alt="Avatar" />
-                        </div>
-                    </div>
-                    <div class="image-container col-span-2 h-auto overflow-hidden rounded-xl agent-grid-shadow relative"
-                        data-tilter>
-                        <img src="/images/human4.jpg" alt="Avatar" />
-                    </div>
-
-                    <div class="col-span-1 flex flex-col gap-4">
-                        <div class="image-container relative h-auto w-full overflow-hidden rounded-xl agent-grid-shadow"
-                            data-tilter>
-                            <img src="/images/human5.jpg" alt="Avatar" />
-                        </div>
-                        <div class="h-1/2 w-full rounded-xl bg-[#4FAFF5] agent-grid-shadow relative" data-tilter>
-                        </div>
-                    </div>
-                </div>
-                <!-- End: Row 2 -->
-
-                <!-- Row 3 -->
-                <div class="mt-4 grid w-full grid-cols-4 gap-4">
-                    <div class="col-start-2 flex flex-col">
-                        <div class="h-1/2 w-full rounded-xl bg-white agent-grid-shadow relative" data-tilter></div>
-                    </div>
-                    <div class="image-container relative col-span-2 h-auto overflow-hidden rounded-xl agent-grid-shadow"
-                        data-tilter>
-                        <img src="/images/human6.jpg" alt="Avatar" />
-                    </div>
-                </div>
-                <!-- End: Row 3 -->
-            </div>
-            <!-- End: Thumbnail Grids -->
-        </section>
-    </div>
-
-    <!-- Who We Are Section -->
-    <div class="container flex flex-col gap-y-16 py-20">
-        <section class="grid grid-cols-1 gap-16 pb-8 md:grid-cols-2">
-            <!-- Team Image -->
-            <div class="flex">
-                <img src="/images/who-we-are.jpg" alt="Team"
-                    class="h-8/12 self-center rounded-[75px] object-cover shadow-xl shadow-gray-400/50 dark:shadow-none md:rounded-[50px]" />
-            </div>
-
-            <!-- About the Company -->
-            <div class="flex flex-col self-center">
-                <header class="mt-12">
-                    <h2 class="relative z-20 mb-8 flex flex-col">
-                        <span class="text-sm font-black uppercase text-secondary-color">
-                            About us
-                        </span>
-                        <span class="text-5xl font-black text-main-color dark:text-white">
-                            Who We Are
-                        </span>
-                    </h2>
-                </header>
-                <p class="mb-4 text-main-color text-lg dark:text-white">
-                    Numquam et tenetur consequuntur dignissimos quia maxime
-                    fugit. Tempora enim recusandae tenetur molestiae
-                    consequatur. Est maxime et laboriosam soluta accusantium
-                    consequatur vero sunt.
-                </p>
-                <a href=""
-                    class="button w-64 shadow-xl transition duration-300 ease-in-out hover:scale-110 hover:shadow-gray-400/75">
-                    Contact Us
-                </a>
-            </div>
-        </section>
-
-        <span class="mx-auto block h-[2px] w-full bg-gray-200 md:w-1/2 dark:bg-gray-700"></span>
-
-        <div
-            class="relative grid grid-cols-6 justify-center gap-16 py-8 md:grid-cols-6 md:flex-row lg:grid-cols-3 dark:text-white">
-            <div class="col-span-3 flex flex-col items-center gap-x-8 lg:col-span-1 lg:flex-row">
-                <span class="stat-number inline-block w-36 text-8xl font-[1000] text-button-normal-color"
-                    data-target="512">
-                    0
-                </span>
-                <span class="sr-only">312</span>
-                <span class="text-lg">Properties Sold</span>
-            </div>
-            <div class="col-span-3 flex flex-col items-center gap-x-8 lg:col-span-1 lg:flex-row">
-                <span class="stat-number inline-block w-36 text-8xl font-[1000] text-button-normal-color"
-                    data-target="55">
-                    0
-                </span>
-                <span class="sr-only">312</span>
-                <span class="text-lg">Real Estate Agents</span>
-            </div>
-            <div
-                class="col-span-6 flex flex-col items-center gap-x-8 md:col-span-4 md:col-start-2 lg:col-span-1 lg:flex-row">
-                <span class="stat-number inline-block w-36 text-8xl font-[1000] text-button-normal-color"
-                    data-target="312">
-                    0
-                </span>
-                <span class="sr-only">312</span>
-                <span class="text-lg">
-                    Happy Family Who
-                    <br />
-                    Bought From Us
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer Section -->
-    <section class="grid grid-cols-1 bg-accent-color xl:grid-cols-2 dark:bg-gray-800">
-        <!-- Map -->
-        <div id="map" class="flex h-96 xl:h-full">
-            <span class="sr-only">Google Maps</span>
-        </div>
-
-        <!-- Contact Form & Footer -->
-        <div class="grid grid-cols-1 items-center gap-4 px-8 py-12 md:grid-cols-2 lg:px-16">
-            <div class="flex dark:text-white">
-                <div class="flex flex-col gap-y-8">
-                    <header>
-                        <h3>
-                            <a href="/" class="text-2xl font-extrabold tracking-tighter">
+                <div class="flex flex-col lg:col-span-7">
+                    <header class="mt-12">
+                        <h2 class="relative z-20 mb-8 flex flex-col">
+                            <span
+                                class="text-sm font-black uppercase text-secondary-color">
+                                Booking
+                            </span>
+                            <span
+                                class="text-5xl font-black text-main-color dark:text-white">
+                                Book Your
                                 <span class="text-secondary-color">
-                                    Home
+                                    House Tour
                                 </span>
-                                <span>Hunters</span>
-                            </a>
-                        </h3>
+                                <br class="hidden lg:block" />
+                                Appointment
+                            </span>
+                        </h2>
                     </header>
+                    <div
+                        class="mb-4 flex w-full flex-col gap-y-4 text-lg text-main-color dark:text-white lg:w-9/12">
+                        <p>
+                            Numquam et tenetur consequuntur dignissimos quia
+                            maxime fugit. Tempora enim recusandae tenetur
+                            molestiae consequatur. Est maxime et laboriosam
+                            soluta accusantium consequatur vero sunt.
+                        </p>
+                        <span
+                            class="inline-block h-[2px] w-1/2 bg-gray-200 dark:bg-gray-700"></span>
+                        <span
+                            class="flex items-center gap-x-2 font-medium text-green-500">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                class="h-6 w-6">
+                                <path
+                                    d="M5.85 3.5a.75.75 0 00-1.117-1 9.719 9.719 0 00-2.348 4.876.75.75 0 001.479.248A8.219 8.219 0 015.85 3.5zM19.267 2.5a.75.75 0 10-1.118 1 8.22 8.22 0 011.987 4.124.75.75 0 001.48-.248A9.72 9.72 0 0019.266 2.5z" />
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M12 2.25A6.75 6.75 0 005.25 9v.75a8.217 8.217 0 01-2.119 5.52.75.75 0 00.298 1.206c1.544.57 3.16.99 4.831 1.243a3.75 3.75 0 107.48 0 24.583 24.583 0 004.83-1.244.75.75 0 00.298-1.205 8.217 8.217 0 01-2.118-5.52V9A6.75 6.75 0 0012 2.25zM9.75 18c0-.034 0-.067.002-.1a25.05 25.05 0 004.496 0l.002.1a2.25 2.25 0 11-4.5 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
 
-                    <div class="flex flex-col">
-                        <span class="text-sm font-bold uppercase text-secondary-color">
-                            Office Address
+                            <span>
+                                There are 14 house tour bookings this week
+                            </span>
                         </span>
-                        <span>
-                            123 Coconut St. Manila PH
-                        </span>
-                    </div>
+                        <div class="flex -space-x-2">
+                            <img
+                                class="avatars"
+                                src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="" />
+                            <img
+                                class="avatars"
+                                src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="" />
+                            <img
+                                class="avatars"
+                                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+                                alt="" />
+                            <img
+                                class="avatars"
+                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="" />
+                            <img
+                                class="avatars"
+                                src="https://images.unsplash.com/photo-1597983073453-ef06cfc2240e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="" />
+                            <img
+                                class="avatars"
+                                src="https://images.unsplash.com/photo-1534330786040-317bdb76ccff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="" />
+                            <img
+                                class="avatars"
+                                src="https://images.unsplash.com/photo-1645910154507-9318dda7e814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="" />
 
-                    <div class="flex flex-col">
-                        <span class="text-sm font-bold uppercase text-secondary-color">
-                            Contact #
-                        </span>
-                        <span>
-                            +63 909 123 4567
-                        </span>
-                    </div>
-
-                    <div class="flex flex-col">
-                        <span class="text-sm font-bold uppercase text-secondary-color">
-                            Email Address
-                        </span>
-                        <a href="mailto:homehunters@example.com">
-                            homehunters@example.com
-                        </a>
-                    </div>
-
-                    <div class="flex flex-col">
-                        <span class="text-sm font-bold uppercase text-secondary-color">
-                            Office Hours
-                        </span>
-                        <a href="">Mon-Fri from 9:00am - 5:00pm</a>
+                            <a
+                                href="#"
+                                class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-sm font-bold ring-2 ring-white dark:ring-gray-400">
+                                <span class="-ml-1 dark:text-main-color">
+                                    +7
+                                </span>
+                            </a>
+                        </div>
+                        <a href="" class="button mt-2 w-64">Book Now</a>
                     </div>
                 </div>
+            </section>
+        </div>
+
+        <!-- Real-Estate Agents Section -->
+        <div class="wrapper mb:16 relative mt-16 py-20 lg:mb-32 lg:mt-60">
+            <div
+                class="before:contents-[''] after:contents-[''] absolute left-0 top-0 z-0 h-full w-full skew-y-[3deg] bg-accent-color before:absolute before:left-0 before:top-0 before:z-10 before:block before:h-12 before:w-1/2 before:bg-main-color after:absolute after:bottom-0 after:right-0 after:z-10 after:block after:h-12 after:w-1/2 after:bg-secondary-color dark:bg-gray-800"></div>
+
+            <section
+                class="container relative z-10 grid grid-cols-1 md:grid-cols-12 md:gap-5">
+                <div
+                    class="order-2 col-span-7 self-center pb-24 md:order-1 lg:col-span-6">
+                    <header class="mt-12">
+                        <h2 class="relative z-20 mb-8 flex flex-col">
+                            <span
+                                class="text-sm font-black uppercase text-secondary-color">
+                                Meet Our Expert Agents
+                            </span>
+                            <span
+                                class="text-5xl font-black text-main-color dark:text-white">
+                                Our Team of
+                                <span class="text-secondary-color">
+                                    Professional
+                                </span>
+                                <br />
+                                Real Estate Agents
+                            </span>
+                        </h2>
+                    </header>
+                    <div class="mb-4 flex w-full flex-col gap-y-4 lg:w-9/12">
+                        <p class="text-lg text-main-color dark:text-white">
+                            Numquam et tenetur consequuntur dignissimos quia
+                            maxime fugit. Tempora enim recusandae tenetur
+                            molestiae consequatur. Est maxime et laboriosam
+                            soluta accusantium consequatur vero sunt.
+                        </p>
+                        <a href="" class="button w-64">Meet Our Agents</a>
+                    </div>
+                </div>
+
+                <!-- Thumbnail Grids -->
+                <div
+                    class="order-1 col-span-5 scale-90 self-center md:order-2 lg:col-span-5 lg:col-start-7">
+                    <!-- Row 1 -->
+                    <div class="grid w-full grid-cols-4 gap-4">
+                        <div
+                            class="image-container agent-grid-shadow col-span-2 h-auto overflow-hidden rounded-xl"
+                            data-tilter>
+                            <img src="/images/human1.jpg" alt="Avatar" />
+                        </div>
+                        <div class="flex h-auto flex-col justify-end">
+                            <div
+                                class="agent-grid-shadow relative z-10 h-1/2 w-full rounded-xl bg-white"
+                                data-tilter></div>
+                        </div>
+                        <div class="flex h-auto flex-col justify-end">
+                            <div
+                                class="image-container agent-grid-shadow h-1/2 w-full overflow-hidden rounded-xl bg-green-300"
+                                data-tilter>
+                                <img
+                                    src="/images/human2.jpg"
+                                    alt="Avatar"
+                                    class="h-full w-full object-cover" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End: Row 1 -->
+
+                    <!-- Row 2 -->
+                    <div class="mt-4 grid w-full grid-cols-4 gap-4">
+                        <div class="col-span-1 flex flex-col gap-4">
+                            <div
+                                class="agent-grid-shadow relative h-1/2 w-full rounded-xl bg-[#0FFC19]"
+                                data-tilter></div>
+                            <div
+                                class="image-container agent-grid-shadow relative h-auto w-full overflow-hidden rounded-xl"
+                                data-tilter>
+                                <img src="/images/human3.jpg" alt="Avatar" />
+                            </div>
+                        </div>
+                        <div
+                            class="image-container agent-grid-shadow relative col-span-2 h-auto overflow-hidden rounded-xl"
+                            data-tilter>
+                            <img src="/images/human4.jpg" alt="Avatar" />
+                        </div>
+
+                        <div class="col-span-1 flex flex-col gap-4">
+                            <div
+                                class="image-container agent-grid-shadow relative h-auto w-full overflow-hidden rounded-xl"
+                                data-tilter>
+                                <img src="/images/human5.jpg" alt="Avatar" />
+                            </div>
+                            <div
+                                class="agent-grid-shadow relative h-1/2 w-full rounded-xl bg-[#4FAFF5]"
+                                data-tilter></div>
+                        </div>
+                    </div>
+                    <!-- End: Row 2 -->
+
+                    <!-- Row 3 -->
+                    <div class="mt-4 grid w-full grid-cols-4 gap-4">
+                        <div class="col-start-2 flex flex-col">
+                            <div
+                                class="agent-grid-shadow relative h-1/2 w-full rounded-xl bg-white"
+                                data-tilter></div>
+                        </div>
+                        <div
+                            class="image-container agent-grid-shadow relative col-span-2 h-auto overflow-hidden rounded-xl"
+                            data-tilter>
+                            <img src="/images/human6.jpg" alt="Avatar" />
+                        </div>
+                    </div>
+                    <!-- End: Row 3 -->
+                </div>
+                <!-- End: Thumbnail Grids -->
+            </section>
+        </div>
+
+        <!-- Who We Are Section -->
+        <div class="container flex flex-col gap-y-16 py-20">
+            <section class="grid grid-cols-1 gap-16 pb-8 md:grid-cols-2">
+                <!-- Team Image -->
+                <div class="flex">
+                    <img
+                        src="/images/who-we-are.jpg"
+                        alt="Team"
+                        class="h-8/12 self-center rounded-[75px] object-cover shadow-xl shadow-gray-400/50 dark:shadow-none md:rounded-[50px]" />
+                </div>
+
+                <!-- About the Company -->
+                <div class="flex flex-col self-center">
+                    <header class="mt-12">
+                        <h2 class="relative z-20 mb-8 flex flex-col">
+                            <span
+                                class="text-sm font-black uppercase text-secondary-color">
+                                About us
+                            </span>
+                            <span
+                                class="text-5xl font-black text-main-color dark:text-white">
+                                Who We Are
+                            </span>
+                        </h2>
+                    </header>
+                    <p class="mb-4 text-lg text-main-color dark:text-white">
+                        Numquam et tenetur consequuntur dignissimos quia maxime
+                        fugit. Tempora enim recusandae tenetur molestiae
+                        consequatur. Est maxime et laboriosam soluta accusantium
+                        consequatur vero sunt.
+                    </p>
+                    <a
+                        href=""
+                        class="button w-64 shadow-xl transition duration-300 ease-in-out hover:scale-110 hover:shadow-gray-400/75">
+                        Contact Us
+                    </a>
+                </div>
+            </section>
+
+            <span
+                class="mx-auto block h-[2px] w-full bg-gray-200 dark:bg-gray-700 md:w-1/2"></span>
+
+            <div
+                class="relative grid grid-cols-6 justify-center gap-16 py-8 dark:text-white md:grid-cols-6 md:flex-row lg:grid-cols-3">
+                <div
+                    class="col-span-3 flex flex-col items-center gap-x-8 lg:col-span-1 lg:flex-row">
+                    <span
+                        class="stat-number inline-block w-36 text-8xl font-[1000] text-button-normal-color"
+                        data-target="512">
+                        0
+                    </span>
+                    <span class="sr-only">312</span>
+                    <span class="text-lg">Properties Sold</span>
+                </div>
+                <div
+                    class="col-span-3 flex flex-col items-center gap-x-8 lg:col-span-1 lg:flex-row">
+                    <span
+                        class="stat-number inline-block w-36 text-8xl font-[1000] text-button-normal-color"
+                        data-target="55">
+                        0
+                    </span>
+                    <span class="sr-only">312</span>
+                    <span class="text-lg">Real Estate Agents</span>
+                </div>
+                <div
+                    class="col-span-6 flex flex-col items-center gap-x-8 md:col-span-4 md:col-start-2 lg:col-span-1 lg:flex-row">
+                    <span
+                        class="stat-number inline-block w-36 text-8xl font-[1000] text-button-normal-color"
+                        data-target="312">
+                        0
+                    </span>
+                    <span class="sr-only">312</span>
+                    <span class="text-lg">
+                        Happy Family Who
+                        <br />
+                        Bought From Us
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <section
+            class="grid grid-cols-1 bg-accent-color dark:bg-gray-800 xl:grid-cols-2">
+            <!-- Map -->
+            <div id="map" class="flex h-96 xl:h-full">
+                <span class="sr-only">Google Maps</span>
             </div>
 
-            <div class="relative h-full">
-                <form
-                    class="relative flex w-full flex-col gap-y-4 overflow-hidden rounded-xl border border-gray-100 bg-white p-8 shadow-xl shadow-gray-300/50 dark:bg-gray-900 dark:border-gray-700 dark:shadow-none dark:text-white">
-                    <h3 class="mb-4 text-2xl font-bold">
-                        Contact Us
-                    </h3>
-                    <div class="flex w-full flex-col gap-y-2">
-                        <label for="name" class="font-bold">
-                            Name
-                        </label>
-                        <div class="relative w-full">
-                            <input id="name" name="name" type="text"
-                                class="w-full rounded-lg bg-gray-100 px-3 py-2 dark:bg-gray-700" value="Lana Bakery"
+            <!-- Contact Form & Footer -->
+            <div
+                class="grid grid-cols-1 items-center gap-4 px-8 py-12 md:grid-cols-2 lg:px-16">
+                <div class="flex dark:text-white">
+                    <div class="flex flex-col gap-y-8">
+                        <header>
+                            <h3>
+                                <a
+                                    href="/"
+                                    class="text-2xl font-extrabold tracking-tighter">
+                                    <span class="text-secondary-color">
+                                        Home
+                                    </span>
+                                    <span>Hunters</span>
+                                </a>
+                            </h3>
+                        </header>
+
+                        <div class="flex flex-col">
+                            <span
+                                class="text-sm font-bold uppercase text-secondary-color">
+                                Office Address
+                            </span>
+                            <span>123 Coconut St. Manila PH</span>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <span
+                                class="text-sm font-bold uppercase text-secondary-color">
+                                Contact #
+                            </span>
+                            <span>+63 909 123 4567</span>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <span
+                                class="text-sm font-bold uppercase text-secondary-color">
+                                Email Address
+                            </span>
+                            <a href="mailto:homehunters@example.com">
+                                homehunters@example.com
+                            </a>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <span
+                                class="text-sm font-bold uppercase text-secondary-color">
+                                Office Hours
+                            </span>
+                            <a href="">Mon-Fri from 9:00am - 5:00pm</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative h-full">
+                    <form
+                        class="relative flex w-full flex-col gap-y-4 overflow-hidden rounded-xl border border-gray-100 bg-white p-8 shadow-xl shadow-gray-300/50 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:shadow-none">
+                        <h3 class="mb-4 text-2xl font-bold">Contact Us</h3>
+                        <div class="flex w-full flex-col gap-y-2">
+                            <label for="name" class="font-bold">Name</label>
+                            <div class="relative w-full">
+                                <input
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    class="w-full rounded-lg bg-gray-100 px-3 py-2 dark:bg-gray-700"
+                                    value="Lana Bakery"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="flex w-full flex-col gap-y-2">
+                            <label for="email" class="font-bold">Email</label>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                class="rounded-lg bg-gray-100 px-3 py-2 dark:bg-gray-700"
                                 required />
                         </div>
-                    </div>
 
-                    <div class="flex w-full flex-col gap-y-2">
-                        <label for="email" class="font-bold">
-                            Email
-                        </label>
-                        <input id="email" name="email" type="email"
-                            class="rounded-lg bg-gray-100 px-3 py-2 dark:bg-gray-700" required />
-                    </div>
+                        <div class="flex w-full flex-col gap-y-2">
+                            <label for="phone" class="font-bold">Phone</label>
+                            <input
+                                id="phone"
+                                name="phone"
+                                type="number"
+                                class="rounded-lg bg-gray-100 px-3 py-2 dark:bg-gray-700"
+                                placeholder="ex. 9761112222" />
+                        </div>
 
-                    <div class="flex w-full flex-col gap-y-2">
-                        <label for="phone" class="font-bold">
-                            Phone
-                        </label>
-                        <input id="phone" name="phone" type="number"
-                            class="rounded-lg bg-gray-100 px-3 py-2 dark:bg-gray-700" placeholder="ex. 9761112222" />
-                    </div>
+                        <div class="flex w-full flex-col gap-y-2">
+                            <label for="message" class="font-bold">
+                                Message
+                            </label>
+                            <textarea
+                                name="message"
+                                id="message"
+                                cols="5"
+                                rows="5"
+                                class="rounded-lg bg-gray-100 px-3 py-2 dark:bg-gray-700"
+                                placeholder="Say something nice... Whisper to my ears, say it slowly!"
+                                required></textarea>
+                        </div>
+                        <div class="flex w-full flex-col gap-y-2">
+                            <button
+                                class="rounded-full bg-button-normal-color py-4 text-white shadow-xl transition duration-300 ease-in-out hover:scale-110 hover:bg-button-hover-color hover:shadow-gray-400/75">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
 
-                    <div class="flex w-full flex-col gap-y-2">
-                        <label for="message" class="font-bold">
-                            Message
-                        </label>
-                        <textarea name="message" id="message" cols="5" rows="5"
-                            class="rounded-lg bg-gray-100 px-3 py-2 dark:bg-gray-700"
-                            placeholder="Say something nice... Whisper to my ears, say it slowly!" required></textarea>
+                <footer
+                    class="flex flex-col md:col-span-2 md:flex-row md:items-center md:justify-between">
+                    <div
+                        class="flex items-center justify-center gap-x-3 py-3 dark:text-white lg:justify-normal">
+                        <h4>
+                            <a
+                                href="/"
+                                class="text-lg font-extrabold tracking-tighter">
+                                <span class="text-secondary-color">Home</span>
+                                <span>Hunters</span>
+                            </a>
+                        </h4>
+                        <p>All Rights Reserved | 2023</p>
                     </div>
-                    <div class="flex w-full flex-col gap-y-2">
-                        <button
-                            class="rounded-full bg-button-normal-color py-4 text-white shadow-xl transition duration-300 ease-in-out hover:scale-110 hover:bg-button-hover-color hover:shadow-gray-400/75">
-                            Send Message
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <footer class="flex flex-col md:col-span-2 md:flex-row md:items-center md:justify-between">
-                <div class="flex items-center justify-center gap-x-3 py-3 lg:justify-normal dark:text-white">
-                    <h4>
-                        <a href="/" class="text-lg font-extrabold tracking-tighter">
-                            <span class="text-secondary-color">Home</span>
-                            <span>Hunters</span>
+                    <div
+                        class="flex justify-center gap-x-4 dark:text-white lg:justify-end">
+                        <a
+                            href=""
+                            class="border-b border-transparent hover:border-main-color">
+                            Terms of Service
                         </a>
-                    </h4>
-                    <p>All Rights Reserved | 2023</p>
-                </div>
-                <div class="flex justify-center gap-x-4 lg:justify-end dark:text-white">
-                    <a href="" class="border-b border-transparent hover:border-main-color">
-                        Terms of Service
-                    </a>
-                    <a href="" class="border-b border-transparent hover:border-main-color">
-                        Privacy Policy
-                    </a>
-                </div>
-            </footer>
-        </div>
-    </section>
+                        <a
+                            href=""
+                            class="border-b border-transparent hover:border-main-color">
+                            Privacy Policy
+                        </a>
+                    </div>
+                </footer>
+            </div>
+        </section>
 
-    <!-- Mobile Menu -->
-    <script src="/scripts/mobile-menu.js"></script>
+        <!-- Mobile Menu -->
+        <script src="/scripts/mobile-menu.js"></script>
 
-    <!-- Card Tilting Animation (Requires GSAP) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
-    <script src="/scripts/card.js"></script>
+        <!-- Card Tilting Animation (Requires GSAP) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
+        <script src="/scripts/card.js"></script>
 
-    <!-- SplideJS Carousel Plugin and Configurations -->
-    <script src="/scripts/splide.min.js"></script>
-    <script src="/scripts/carousel.js"></script>
+        <!-- SplideJS Carousel Plugin and Configurations -->
+        <script src="/scripts/splide.min.js"></script>
+        <script src="/scripts/carousel.js"></script>
 
-    <!-- Stats Animation -->
-    <script src="/scripts/stat-animation.js"></script>
+        <!-- Stats Animation -->
+        <script src="/scripts/stat-animation.js"></script>
 
-    <!-- Youtube Video -->
-    <script src="/scripts/youtube.js"></script>
+        <!-- Youtube Video -->
+        <script src="/scripts/youtube.js"></script>
 
-    <!-- Grid Avatar Animation -->
-    <script src="/scripts/grid-avatar-animation.js"></script>
+        <!-- Grid Avatar Animation -->
+        <script src="/scripts/grid-avatar-animation.js"></script>
 
-    <!-- Theme Togglers -->
-    <script src="/scripts/theme-toggle.js"></script>
+        <!-- Theme Togglers -->
+        <script src="/scripts/theme-toggle.js"></script>
 
-    <!-- Google Map -->
-    <!--
+        <!-- Google Map -->
+        <!--
         You need to include this script tag on any page that has a Google Map.
 
         The following script tag will work when opening this example locally on your computer.
@@ -883,8 +1162,7 @@
         After you sign up, use the following script tag with YOUR_GOOGLE_API_KEY replaced with your actual key.
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY"></script>
     -->
-    <script src="https://maps.googleapis.com/maps/api/js?key="></script>
-    <script src="/scripts/map.js"></script>
-</body>
-
+        <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+        <script src="/scripts/map.js"></script>
+    </body>
 </html>
