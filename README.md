@@ -39,6 +39,12 @@ This is a free, open-source website landing template styled using Tailwindcss le
 git@github.com:glennraya/homehunter.git
 ```
 
+If you don't have SSH access setup to your Github account, you should use HTTPS instead:
+
+```bash
+https://github.com/glennraya/homehunter.git
+```
+
 **Install NPM dependencies**
 
 ```bash
